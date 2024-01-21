@@ -1,102 +1,102 @@
 
 <script>
-    import logo from "../lib/assets/logo.png"
-
-    import logogit from "../lib/assets/logogit.png"
+    import logo_invertida from "../lib/assets/Logo_invertida.png"
+    import github from '../lib/assets/github.svg'
 </script>
 
 
 
-<footer>
-               
-    <ul>
-    <div class="information_footer">
-        <li>
-            <a href="#">Sobre nós</a>
-        </li>
+<footer>     
+    <div class="links">
+            <li><a href="/#">Sobre nós</a></li>
+            <li><a href="/#">Termos de uso</a></li>
+            <li><a href="/#">Politícas de privacidade</a></li>
+            <li><a href="/#">Api</a></li>
     </div>
 
-    <div class="information_footer">
-        <li>
-            <a href="#">Termos de uso</a>
-        </li>
+    <div class="bottom-footer">
+        <div class="github-container">
+            <img src="{github}" alt="github logo">
+            <div id="text-github">
+                <a href="https://github.com">GitHub</a>
+            </div>
+        </div>
+
+        <div class="logo-container">
+            <img src="{logo_invertida}" alt="logo">
+            <div class="copy-container">
+                <h4 class="Copyright">Copyright © 2024</h4>
+            </div>
+        </div>
     </div>
-
-    <div class="information_footer">
-        <li>
-            <a href="#">Politícas de privacidade</a>
-        </li>
-    </div>
-    </ul>
-
-    
-
-    <div id="logo_invertida3">
-
-        <div>
-        <img src="{logogit}">
-    <div id="text-github">
-        <a href="https://github.com">GitHub</a>
-    </div>
-
-    </div>
-        <img src="{logo}">
-    </div>
-
-    <div class="copyright">
-        <h4 class="Copyright">Copyright © 2024</h4>
-    </div>
-
-
 </footer>
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap');
 
-* {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    color: white;
-}
+    * {
+        font-family: 'Roboto', sans-serif;
+        color: white;
+    }
+    footer {
+        display: flex;
+        flex-direction: column;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        background-color: #151515;
+    }
+    .links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        /* background: blue; */
+    }
 
-footer {
-    background-color: #151515;
-    flex-shrink: 0;
-    padding: 5px;
+    .links li {
+        list-style: none;
+    }
 
-}
-
-#logo_invertida3{
-    display: flex;
-    justify-content: center;
+    .github-container {
+        display: flex;
+        flex-direction: column;
+        /* background-color: red; */
+    }
     
-   
-    
+    .bottom-footer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        /* background-color: purple; */
+    }
+    .logo-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        /* background-color: green; */
+    }
 
-}
-.Copyright {
-    text-align: center;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    padding: 10px 0px;
-}
+    .logo-container img {
+        width: 300px;
+    }
 
-.information_footer {
-    text-align: center;
-    list-style: none;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    padding: 10px;
-    
-}
+    .copy-container {
+        /* background-color: yellow; */
+        width: 100%;
+    }
 
-ul {
-    display: flex;
-    justify-content: center;
-}
-header {
-    background-color: white;
-}
+    .Copyright {
+        text-align: center;
+        font-size: 1rem;
+        font-weight: normal;
+    }
+
+    .information_footer {
+        text-align: center;
+        list-style: none;
+        font-size: 14px;
+        padding: 10px;
+        
+    }
 </style>
