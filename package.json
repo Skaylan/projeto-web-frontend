@@ -10,6 +10,8 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
+		"@skeletonlabs/skeleton": "^2.7.1",
+		"@skeletonlabs/tw-plugin": "^0.3.1",
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
@@ -25,5 +27,8 @@
 		"tailwindcss": "^3.4.1",
 		"vite": "^5.0.12"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@floating-ui/dom": "^1.5.4"
+	}
 }
