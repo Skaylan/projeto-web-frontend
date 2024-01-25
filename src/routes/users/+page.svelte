@@ -1,16 +1,3 @@
-<script>
-	let class_ = 'hidden';
-
-	function toggleMenu() {
-		class_ = class_ === '' ? 'hidden' : '';
-	}
-
-	function closeModal() {
-		class_ = 'hidden';
-	}
-
-	$: console.log(class_);
-</script>
 
 <!-- Primeira Seção -->
 <div class="relative border-2 border-rose-500 w-full bg-[#50d71e] sm:h-[260px] md:h-[500px]">
@@ -22,8 +9,13 @@
 
 	<div class="absolute flex flex-col m-4 h-auto bottom-[1px] left-0 sm:ml-7 mb-2 md:m-12">
 		<div
-			class="border-2 rounded-full border-red-500 sm:w-[7rem] h-[7rem] md:w-[13rem] md:h-[13rem]">
-            <img src="https://placehold.co/30x30" alt="Ícone de usuário" class="w-full h-full object-cover rounded-full"/>
+			class="border-2 rounded-full border-red-500 sm:w-[7rem] h-[7rem] md:w-[13rem] md:h-[13rem]"
+		>
+			<img
+				src="https://placehold.co/30x30"
+				alt="Ícone de usuário"
+				class="w-full h-full object-cover rounded-full"
+			/>
 		</div>
 		<div class="mt-1 flex items-center justify-center">
 			<h1 class="text-white text-lg font-semibold text-center sm:text-sm md:text-3xl">User Name</h1>
@@ -33,24 +25,27 @@
 
 <!-- Segunda Seção -->
 <div
-	class="flex flex-col sm:flex-row items-center justify-center sm:justify-between space-y-4 sm:space-y-0 sm:space-x-4 border-red-500"
+	class="flex flex-col sm:flex-row items-center justify-center sm:justify-between border-red-500"
 >
-	<ul class="flex flex-wrap sm:flex-nowraz">
-		<li class="p-3">
-			<a on:click={toggleMenu} class="cursor-pointer">Categorias</a>
-			<!-- Menu Suspenso -->
-			<ul
-				class="{class_} w-[10rem] h-[16rem] absolute mt-2 space-y-2 border bg-cyan-200 border-gray-300 rounded-md categories-dropdown"use:handleMount>
-				<div class="ml-2 mt-2">
-                    <li class="pb-2"><a href="/#">Romance</a></li>
-                    <li class="pb-2"><a href="/#">Aventura</a></li>
-                    <li class="pb-2"><a href="/#">Comedia</a></li>
-                    <li class="pb-2"><a href="/#">Suspense</a></li>
-                </div>     
-			</ul>
+	<ul class="flex flex-wrap gap-1 flex-nowrap md:ml-[17px] lg:ml-[17px] ">
+		<li class="p-0 bg-[#75C9C8] flex rounded-t-lg sm: md:p-3 lg:p-3">
+			<div class="flex justify-items-center sm:">
+				<img class="h-[20px] h-[20px] sm:m-1" src="src\lib\assets\icons-funil.png" alt="icons-funil" />
+			</div>
+			<a on:click={toggleMenu} class="cursor-pointer text-end">Categorias</a>
+			
+		<li class="p-0 flex bg-[#75C9C8] rounded-t-lg sm: md:p-3 lg:p-3">
+			<div class="flex justify-items-center sm:">
+				<img class="h-[20px] h-[20px] sm:m-1" src="src\lib\assets\icons-recentes.png" alt="icons-recentes" />
+			</div>
+			<a class="sm:" href="/#">Recentes</a>
 		</li>
-		<li class="p-3"><a href="/#">Recentes</a></li>
-		<li class="p-3"><a href="/#">Ordem Alfabética</a></li>
+		<li class="p-0 flex bg-[#75C9C8] rounded-t-lg sm: md:p-3 lg:p-3">
+			<div class="flex justify-items-center sm:">
+				<img class="h-[20px] h-[20px] sm:m-1" src="src\lib\assets\icons-ordem-alfabetica.png" alt="icons-ordem-alfabetica" />
+			</div>
+			<a class="sm:" href="/#">Ordem Alfabética</a>
+		</li>
 	</ul>
 </div>
 
