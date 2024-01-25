@@ -69,9 +69,11 @@ img{
 	padding-bottom: 5%;
 }
 
-.texto__imagem{
+.conteudo__imagem__adicional .texto__imagem{
 	font-family: Arial, Helvetica, sans-serif;
 	margin-left: 5%;
+	font-size: 1px;
+	
 }
 
 .conteudo__imagem__adicional__avaliacao{
@@ -87,9 +89,33 @@ img{
 
 .conteudo__imagem__avaliacao__nota{
 	font-size: 20px;
-    font-weight: 500;
+    font-weight: 700;
 	align-self: center;
 }
 
+@media screen and (max-width: 768px) {
+    .conteudo {
+        grid-template-columns: 1fr; /* Change to a single column layout for smaller screens */
+        margin-top: 30px; /* Adjust margins as needed */
+    }
 
+    .conteudo__imagem {
+        width: 95vw; /* Make images span the full width of the container */
+    }
+
+	.conteudo__imagem__adicional{
+		width: 100%;
+	}
+}
+
+@media screen and (min-width:1280px) and (max-width:1980px){
+	
+	.conteudo__imagem{
+		width: 25vw;
+	}
+
+	.texto__imagem p{
+		font-size: 1px;
+	}
+} 
 
