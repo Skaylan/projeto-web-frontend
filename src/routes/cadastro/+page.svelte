@@ -9,7 +9,6 @@
 <section>
     <div class="nebula">
         <img src="{Logo}" alt="Logo">
-
         <h4>SEU ACERVO DE HISTÓRIAS<br>INCRÍVEIS</h4>
     </div>
 
@@ -18,26 +17,11 @@
             <h3>
                 SEJA BEM-VINDO
             </h3>
-
-            <p>
-                <input type="text" name="nome" id="inome" placeholder="Nome" max="40" required>
-            </p>
-
-            <p>
-                <input type="text" name="usuario" id="iusuario" placeholder="Nome de usuário" min="8" max="20" required>
-            </p>
-
-            <p>
-                <input type="email" name="email" id="iemail" placeholder="E=mail" required>
-            </p>
-
-            <p>
-                <input type="password" name="senha" id="isenha" min="8" max="20" placeholder="Senha" required>
-            </p>
-
-            <p>
-                <input type="password" name="senha2" id="isenha2" min="8" max="20" placeholder="Repetir senha" required>
-            </p>
+            <input type="text" name="nome" id="inome" placeholder="Nome" max="40" required>
+            <input type="text" name="usuario" id="iusuario" placeholder="Nome de usuário" min="8" max="20" required>
+            <input type="email" name="email" id="iemail" placeholder="Email" required>
+            <input type="password" name="senha" id="isenha" min="8" max="20" placeholder="Senha" required>
+            <input type="password" name="senha2" id="isenha2" min="8" max="20" placeholder="Repetir senha" required>
 
             <input type="submit" value="Criar conta">
         </form>
@@ -54,10 +38,7 @@
 </section>
 
 <style>
-    @charset "UTF-8";
-
     @import url('https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap');
-
     @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 
@@ -201,10 +182,6 @@
     /* Abaixo de 625px */
 
     @media screen and (max-width: 625px) {
-
-        body {
-            margin: auto;
-        }
 
         section {
             align-items: center;

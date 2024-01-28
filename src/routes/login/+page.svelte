@@ -17,17 +17,10 @@
 
     <div class="form">
         <form action="#">
-            <h3>
-                SEJA BEM-VINDO
-            </h3>
-
-            <p>
-                <input type="text" name="usuario" id="iusuario" placeholder="Nome de usuário" min="8" max="20" required>
-                <input type="password" name="senha" id="isenha" min="8" max="20" placeholder="Senha" required>
-            </p>
-
+            <h3>SEJA BEM-VINDO</h3>
+            <input type="email" name="email" id="iusuario" placeholder="Email" required>
+            <input type="password" name="senha" id="isenha" min="8" max="20" placeholder="Senha" required>
             <a href="#" id="esqueci-senha">Esqueci minha senha</a>
-
             <input type="submit" value="Login">
         </form>
 
@@ -39,10 +32,7 @@
 </section>
 
 <style>
-    @charset "UTF-8";
-
     @import url('https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap');
-
     @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 

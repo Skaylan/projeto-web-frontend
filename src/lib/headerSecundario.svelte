@@ -214,15 +214,11 @@
             height: 350px;
             width: 0px;
             right: 0;
+            background-color: white;
             margin-top: 8px;
-            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.626);
-            background-color: rgba(255, 255, 255, 0.734);
-            border-bottom-left-radius: 6px;
-            border-top-left-radius: 4px;
-            transition: width 0.4s;
-            background-size: 100px;
-            background-position: 150px bottom ;
-            background-repeat: no-repeat;
+            box-shadow: 3px 3px 8px #000;
+            border-bottom-left-radius: 5px;
+            border-top-left-radius: 5px;
         }
 
         .iconeMenu {
