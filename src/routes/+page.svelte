@@ -1,8 +1,4 @@
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-</head>
-<body>
-	<h1>Filmes</h1>
+
 	<div class="conteudo">
 		<div class="conteudo-imagem">
 			<img src="https://placehold.jp/500x700.png" alt="Imagem" />
@@ -18,7 +14,11 @@
 
 				<div class="conteudo-imagem__adicional__avaliacao">
 					<span class="conteudo-imagem__avaliacao__imagem"
-						><img src="src\lib\assets\icons8-stars-96.png" alt="" /></span
+						><img src="src\lib\assets\star.svg" alt="" />
+						<img class="middle-star" src="src\lib\assets\star.svg" alt="" />
+						<img src="src\lib\assets\star.svg" alt="" />
+						</span 
+						
 					>
 					<span class="conteudo-imagem__avaliacao__nota">8.5</span>
 				</div>
@@ -38,7 +38,10 @@
 
 				<div class="conteudo-imagem__adicional__avaliacao">
 					<span class="conteudo-imagem__avaliacao__imagem"
-						><img src="src\lib\assets\icons8-stars-96.png" alt="" /></span
+						><img src="src\lib\assets\star.svg" alt="" />
+						<img class="middle-star" src="src\lib\assets\star.svg" alt="" />
+						<img src="src\lib\assets\star.svg" alt="" />
+						</span
 					>
 					<span class="conteudo-imagem__avaliacao__nota">8.5</span>
 				</div>
@@ -58,7 +61,10 @@
 
 				<div class="conteudo-imagem__adicional__avaliacao">
 					<span class="conteudo-imagem__avaliacao__imagem"
-						><img src="src\lib\assets\icons8-stars-96.png" alt="" /></span
+						><img src="src\lib\assets\star.svg" alt="" />
+						<img class="middle-star" src="src\lib\assets\star.svg" alt="" />
+						<img src="src\lib\assets\star.svg" alt="" />
+						</span
 					>
 					<span class="conteudo-imagem__avaliacao__nota">8.5</span>
 				</div>
@@ -78,7 +84,10 @@
 
 				<div class="conteudo-imagem__adicional__avaliacao">
 					<span class="conteudo-imagem__avaliacao__imagem"
-						><img src="src\lib\assets\icons8-stars-96.png" alt="" /></span
+						><img src="src\lib\assets\star.svg" alt="" />
+						<img class="middle-star" src="src\lib\assets\star.svg" alt="" />
+						<img src="src\lib\assets\star.svg" alt="" />
+						</span
 					>
 					<span class="conteudo-imagem__avaliacao__nota">8.5</span>
 				</div>
@@ -98,7 +107,10 @@
 
 				<div class="conteudo-imagem__adicional__avaliacao">
 					<span class="conteudo-imagem__avaliacao__imagem"
-						><img src="src\lib\assets\icons8-stars-96.png" alt="" /></span
+						><img src="src\lib\assets\star.svg" alt="" />
+						<img class="middle-star" src="src\lib\assets\star.svg" alt="" />
+						<img src="src\lib\assets\star.svg" alt="" />
+						</span
 					>
 					<span class="conteudo-imagem__avaliacao__nota">8.5</span>
 				</div>
@@ -118,14 +130,16 @@
 
 				<div class="conteudo-imagem__adicional__avaliacao">
 					<span class="conteudo-imagem__avaliacao__imagem"
-						><img src="src\lib\assets\icons8-stars-96.png" alt="" /></span
+						><img src="src\lib\assets\star.svg" alt="" />
+						<img class="middle-star" src="src\lib\assets\star.svg" alt="" />
+						<img src="src\lib\assets\star.svg" alt="" />
+						</span
 					>
 					<span class="conteudo-imagem__avaliacao__nota">8.5</span>
 				</div>
 			</div>
 		</div>
 	</div>
-</body>
 
 <style>
 	* {
@@ -211,16 +225,21 @@
 		margin-top: 10%;
 		margin-right: 5%;
 	}
+	.middle-star{
+		margin-bottom: 15px;
+	}
 	.conteudo-imagem__avaliacao__imagem {
+		display: flex;
 		align-self: center;
-		height: 10vh;
-		width: auto;
+		flex-direction: row;
+		height: 8vh;
+		width: 4vw;
 	}
 	.conteudo-imagem__avaliacao__nota {
 		font-size: 20px;
 		font-weight: 700;
 		align-self: center;
-		padding-bottom: 0;
+		margin-bottom:100px;
 	}
 
 	.conteudo-imagem .titulo-imagem {
