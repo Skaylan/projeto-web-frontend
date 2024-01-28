@@ -83,9 +83,8 @@
         </a>
     </div>
 </header>
-<div id="barraMenu">
-    
-</div>
+
+<div id="barraMenu"></div>
 
 <style>
     
