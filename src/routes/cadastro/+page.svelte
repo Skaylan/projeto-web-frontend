@@ -1,12 +1,10 @@
-
 <script>
     import HeaderSecundario from "$lib/headerSecundario.svelte";
     import googleLogo from "$lib/assets/google-logo.svg";
     import Logo from "$lib/assets/Logo.png";
-
 </script>
 
-<HeaderSecundario  pagina="login" />
+<HeaderSecundario />
 
 <section>
     <div class="nebula">
@@ -22,19 +20,36 @@
             </h3>
 
             <p>
+                <input type="text" name="nome" id="inome" placeholder="Nome" max="40" required>
+            </p>
+
+            <p>
                 <input type="text" name="usuario" id="iusuario" placeholder="Nome de usuário" min="8" max="20" required>
+            </p>
+
+            <p>
+                <input type="email" name="email" id="iemail" placeholder="E=mail" required>
+            </p>
+
+            <p>
                 <input type="password" name="senha" id="isenha" min="8" max="20" placeholder="Senha" required>
             </p>
 
-            <a href="#" id="esqueci-senha">Esqueci minha senha</a>
+            <p>
+                <input type="password" name="senha2" id="isenha2" min="8" max="20" placeholder="Repetir senha" required>
+            </p>
 
-            <input type="submit" value="Login">
+            <input type="submit" value="Criar conta">
         </form>
 
         <button id="login-google">
             <img src="{googleLogo}" alt="Ícone google">
-            <p>Login com Google</p>
-        </button>     
+            <p>Criar com Google</p>
+        </button> 
+        
+        <p id="tep">
+            Ao se registrar você concorda com nossos <a href="#">termos de uso</a> e <a href="#">privacidade</a>
+        </p>
     </div>
 </section>
 
@@ -96,11 +111,8 @@
         display: flex;
         flex-flow: column nowrap;
         justify-content: center;
-        margin-top: -80px;
+        margin-top: 80px;
         width: 50vw;
-        background: url(../../lib/assets/catbus_running.png) no-repeat;
-        background-position: center bottom;
-        background-size: 50%;
     }
 
     .form h3 {
@@ -111,7 +123,7 @@
 
     .form input {
         display: block;
-        padding: 13px 13px 13px 20px;
+        padding: 3px 3px 3px 20px;
         margin: 10px auto 15px auto;
         font-size: 20px;
         width: 350px;
@@ -132,22 +144,12 @@
         text-align: center;
     }
 
-
-    form > a#esqueci-senha {
-        display: block;
-        width: 370px;
-        margin: auto;
-        text-align: right;
-        font-size: 15px;
-        font-family: 'Roboto', sans-serif;
-
-    }
-
     form > input[type="submit"] {
         background-color: #4BC74F;
         font-family: 'Roboto', sans-serif;
         font-size: 24px;
         font-weight: 400;
+        width: 375px;
         color: white;
         margin-top: 30px;
         padding: 13px;
@@ -185,8 +187,12 @@
         bottom: 2px;
     }
 
-    li#entrar {
-        display: none;
+    #tep {
+        width: 375px;
+        font-size: 13px;
+        position: relative;
+        top: -178px;
+        right: -71px;
     }
 
 
@@ -199,6 +205,7 @@
         body {
             margin: auto;
         }
+
         section {
             align-items: center;
             width: 355px;
@@ -215,22 +222,24 @@
         .form {
             display: flex;
             justify-content: normal;
-            margin: 10px auto;
+            margin: auto;
+            margin-top: -18px;
             align-items: center;
             background: none;
         }
 
         .form h3 {
-            font-size: 30px;
+            font-size: 25px;
+            margin-bottom: 3px;
         }
         
         .form input {
             display: block;
-            padding: 3px 10px 3px 20px;
-            margin: 10px auto 15px auto;
+            padding: 3px 10px 5px 20px;
+            margin: 10px auto 20px auto;
             font-size: 15px;
             width: 255px;
-            height: 55px;
+            height: 35px;
             border-radius: 3px;
             border: none;
             box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.41);
@@ -241,27 +250,46 @@
             font-size: 15px;
         }
 
-        form > a#esqueci-senha {
-            margin-top: 30px;
-            text-align: center;
-
-        }
 
         button#login-google {
-            display: block;
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            justify-items: center;
             width: 195px;
-            margin-bottom: 50px;
+            margin: 0;
         }
 
         button#login-google > p {
             font-size: 15px;
             position: relative;
-            display: inline;
+            top: 0;
+            margin: 0;
+            display: inline-block;
             bottom: 7px;
         }
 
         form > input[type="submit"] {
-            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 5px;
+            margin-bottom: 2px;
+            font-size: 15px;
+            width: 195px;
+        }
+
+        button#login-google > img {
+            width: 15px;
+            margin: auto 5px auto 18px
+        }
+
+        #tep {
+            position: static;
+            width: 195px;
+            font-size: 10px;
+            text-align: center;
         }
     }
 
@@ -273,13 +301,14 @@
         section {
             flex-direction: column;
             justify-content: space-between;
+            background-color: rgb(242, 242, 242);
             width: 60%;
             min-width: 550px;
             max-width: 660px;;
         }
 
         .nebula {
-            display: flex;
+            display: none;
             width: 100%;
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
@@ -296,7 +325,7 @@
         }
 
         .nebula > h4 {
-            font-size: 20px;
+            font-size: 18px;
             font-family: 'Hanalei Fill', sans-serif;
             margin-top: 10px;
             letter-spacing: 0.1em;
@@ -309,6 +338,7 @@
             align-items: center;
             background: none;
         }
+
 
         .form h3 {
             margin-top: 10px;
@@ -323,7 +353,6 @@
             display: block;
             width: 300px;
             max-width: 350px;
-            margin-bottom: 50px;
         }
 
         button#login-google > p {
@@ -333,10 +362,23 @@
             bottom: 5px;
         }
 
-        form > a#esqueci-senha {
-            margin-top: 30px;
-            text-align: center;
+        form > input[type="submit"] {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 23px;
+            margin-bottom: 2px;
+            font-size: 25px;
+            width: 300px;
+        }
 
+        #tep {
+            position: static;
+            width: 300px;
+            font-size: 16px;
+            text-align: center;
+            margin-top: -58px;
         }
     }
 
