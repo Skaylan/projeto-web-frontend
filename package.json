@@ -30,6 +30,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@floating-ui/dom": "^1.5.4"
+		"@floating-ui/dom": "^1.5.4",
+		"js-cookie": "^3.0.5",
+		"jwt-decode": "^4.0.0"
 	}
 }

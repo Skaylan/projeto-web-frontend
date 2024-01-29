@@ -3,6 +3,45 @@
     import HeaderSecundario from "$lib/headerSecundario.svelte";
     import googleLogo from "$lib/assets/google-logo.svg";
     import Logo from "$lib/assets/Logo.png";
+    import Cookies from 'js-cookie'
+    import { goto } from '$app/navigation'
+    import { jwtDecode } from 'jwt-decode';
+
+    let name;
+    let username;
+    let email;
+    let password;
+    let rePassword;
+
+    // $: console.log(name, username, email, password, rePassword)
+    
+    const handleLoginButton = () => {
+        const payload = {
+                "email": email,
+                "password": password
+            }
+
+        fetch("http://localhost:5000/api/v1/authenticate", {
+            method: "POST",
+            mode: "cors",
+            body: JSON.stringify(payload),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => {
+            return response.json()
+        }).then(data => {
+            Cookies.set("token", data.token)
+            const decoded = jwtDecode(data.token)
+            goto(`/user/${decoded.user_id}`, {
+                replaceState: false,
+                
+            })
+            console.log(data)
+        }).catch(error => {
+            console.error(error)
+        })
+    }
 
 </script>
 
@@ -18,10 +57,10 @@
     <div class="form">
         <form action="#">
             <h3>SEJA BEM-VINDO</h3>
-            <input type="email" name="email" id="iusuario" placeholder="Email" required>
-            <input type="password" name="senha" id="isenha" min="8" max="20" placeholder="Senha" required>
+            <input bind:value={email} type="email" name="email" id="iusuario" placeholder="Email" required>
+            <input bind:value={password} type="password" name="senha" id="isenha" min="8" max="20" placeholder="Senha" required>
             <a href="#" id="esqueci-senha">Esqueci minha senha</a>
-            <input type="submit" value="Login">
+            <input on:click={handleLoginButton} type="submit" value="Login">
         </form>
 
         <button id="login-google">
