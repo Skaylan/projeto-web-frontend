@@ -3,7 +3,7 @@
 		<div class="conteudo-imagem">
 			<img src="https://placehold.jp/500x700.png" alt="Imagem" />
 			<div class="conteudo-imagem__adicional">
-				<div class="conteudo-imagem__adicional__texto">
+				<div class="conteudo-imagem__texto">
 					<h1 class="titulo-imagem">Titulo</h1>
 					<p class="texto-imagem">
 						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat vero, debitis nam
@@ -12,7 +12,7 @@
 					</p>
 				</div>
 
-				<div class="conteudo-imagem__adicional__avaliacao">
+				<div class="conteudo-imagem__avaliacao">
 					<span class="conteudo-imagem__avaliacao__imagem"
 						><img src="src\lib\assets\star.svg" alt="" />
 						<img class="middle-star" src="src\lib\assets\star.svg" alt="" />
@@ -27,7 +27,7 @@
 		<div class="conteudo-imagem">
 			<img src="https://placehold.jp/500x700.png" alt="Imagem" />
 			<div class="conteudo-imagem__adicional">
-				<div class="conteudo-imagem__adicional__texto">
+				<div class="conteudo-imagem__texto">
 					<h1 class="titulo-imagem">Titulo</h1>
 					<p class="texto-imagem">
 						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat vero, debitis nam
@@ -36,7 +36,7 @@
 					</p>
 				</div>
 
-				<div class="conteudo-imagem__adicional__avaliacao">
+				<div class="conteudo-imagem__avaliacao">
 					<span class="conteudo-imagem__avaliacao__imagem"
 						><img src="src\lib\assets\star.svg" alt="" />
 						<img class="middle-star" src="src\lib\assets\star.svg" alt="" />
@@ -50,7 +50,7 @@
 		<div class="conteudo-imagem">
 			<img src="https://placehold.jp/500x700.png" alt="Imagem" />
 			<div class="conteudo-imagem__adicional">
-				<div class="conteudo-imagem__adicional__texto">
+				<div class="conteudo-imagem__texto">
 					<h1 class="titulo-imagem">Titulo</h1>
 					<p class="texto-imagem">
 						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat vero, debitis nam
@@ -59,7 +59,7 @@
 					</p>
 				</div>
 
-				<div class="conteudo-imagem__adicional__avaliacao">
+				<div class="conteudo-imagem__avaliacao">
 					<span class="conteudo-imagem__avaliacao__imagem"
 						><img src="src\lib\assets\star.svg" alt="" />
 						<img class="middle-star" src="src\lib\assets\star.svg" alt="" />
@@ -73,7 +73,7 @@
 		<div class="conteudo-imagem">
 			<img src="https://placehold.jp/500x700.png" alt="Imagem" />
 			<div class="conteudo-imagem__adicional">
-				<div class="conteudo-imagem__adicional__texto">
+				<div class="conteudo-imagem__texto">
 					<h1 class="titulo-imagem">Titulo</h1>
 					<p class="texto-imagem">
 						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat vero, debitis nam
@@ -82,7 +82,7 @@
 					</p>
 				</div>
 
-				<div class="conteudo-imagem__adicional__avaliacao">
+				<div class="conteudo-imagem__avaliacao">
 					<span class="conteudo-imagem__avaliacao__imagem"
 						><img src="src\lib\assets\star.svg" alt="" />
 						<img class="middle-star" src="src\lib\assets\star.svg" alt="" />
@@ -96,7 +96,7 @@
 		<div class="conteudo-imagem">
 			<img src="https://placehold.jp/500x700.png" alt="Imagem" />
 			<div class="conteudo-imagem__adicional">
-				<div class="conteudo-imagem__adicional__texto">
+				<div class="conteudo-imagem__texto">
 					<h1 class="titulo-imagem">Titulo</h1>
 					<p class="texto-imagem">
 						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat vero, debitis nam
@@ -105,7 +105,7 @@
 					</p>
 				</div>
 
-				<div class="conteudo-imagem__adicional__avaliacao">
+				<div class="conteudo-imagem__avaliacao">
 					<span class="conteudo-imagem__avaliacao__imagem"
 						><img src="src\lib\assets\star.svg" alt="" />
 						<img class="middle-star" src="src\lib\assets\star.svg" alt="" />
@@ -119,7 +119,7 @@
 		<div class="conteudo-imagem">
 			<img src="https://placehold.jp/500x700.png" alt="Imagem" />
 			<div class="conteudo-imagem__adicional">
-				<div class="conteudo-imagem__adicional__texto">
+				<div class="conteudo-imagem__texto">
 					<h1 class="titulo-imagem">Titulo</h1>
 					<p class="texto-imagem">
 						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat vero, debitis nam
@@ -128,7 +128,7 @@
 					</p>
 				</div>
 
-				<div class="conteudo-imagem__adicional__avaliacao">
+				<div class="conteudo-imagem__avaliacao">
 					<span class="conteudo-imagem__avaliacao__imagem"
 						><img src="src\lib\assets\star.svg" alt="" />
 						<img class="middle-star" src="src\lib\assets\star.svg" alt="" />
@@ -202,7 +202,7 @@
 		visibility: visible;
 	}
 
-	.conteudo-imagem__adicional__texto {
+	.conteudo-imagem__texto {
 		width: 70%;
 		margin-top: 5%;
 	}
@@ -218,7 +218,7 @@
 		margin-left: 5%;
 	}
 
-	.conteudo-imagem__adicional__avaliacao {
+	.conteudo-imagem__avaliacao {
 		vertical-align: middle;
 		display: flex;
 		flex-direction: column;
@@ -260,9 +260,24 @@
 			width: 95vw;
 		}
 
-		.conteudo-imagem__adicional {
-			width: 100%;
+
+		.conteudo-imagem__avaliacao__imagem > img{
+			width: 7vw;
+			height: 6vh;
 		}
+
+		.conteudo-imagem__avaliacao__imagem {
+			margin-top: 50px;
+			margin-right: 60px;
+			width: 6vw;
+			height: 6vh;
+		}
+		.middle-star{
+			padding-top: 10px;
+		}
+
+	
+
 	}
 
 	@media screen and (max-width: 768px) and (orientation: landscape) {
@@ -278,33 +293,52 @@
 		.conteudo-imagem__avaliacao__nota {
 			margin-top: 50px;
 		}
+
+		.conteudo-imagem__avaliacao__imagem{
+			width: 3vw;
+			margin-right: 10%;
+		}
 	}
 
 	@media screen and (min-width: 769px) and (max-width: 1279px) {
 		.conteudo-imagem {
 			width: 32vw;
-			height: 46vh;
+			height:40vh;
 		}
 
 		.conteudo-imagem__adicional {
 			top: 55%;
 		}
 
-		.conteudo-imagem__avaliacao__imagem {
-			margin-top: 100%;
-			width: 6vw;
-			height: 6vh;
+		.conteudo-imagem__avaliacao__imagem > img{
+			width: 60%;
+			height: 80%;
 		}
 
-		.conteudo-imagem__avaliacao__nota {
-			padding-bottom: 100px;
+		.conteudo-imagem__avaliacao__imagem{
+			height: 5vh;
+			width: 4vw;
+			margin-right: 20px;
+			margin-top:30px;
+		}
+		
+		.conteudo-imagem__avaliacao__nota{
+			margin-left: 9px;
+		}
+
+		.middle-star{
+			height: 4vh;
+			width: 3vw;
+			padding-top: 5px;
+		
+
 		}
 
 		.conteudo-imagem .texto-imagem {
 			font-size: 0.925rem;
 		}
 		.conteudo-imagem .titulo-imagem {
-			font-size: 1.5rem;
+			font-size: 1.20rem;
 			font-weight: bolder;
 		}
 	}
@@ -312,6 +346,38 @@
 	@media screen and (min-width: 1280px) and (max-width: 1980px) {
 		.conteudo-imagem {
 			width: 25vw;
+			height: 70vh;
 		}
+
+		.conteudo-imagem__avaliacao__imagem{
+			height: 4vh;
+			width: 3vw;
+			margin-right: 50px;
+			margin-top:30px;
+		}
+
+		.conteudo-imagem__avaliacao__nota{
+			margin-left: 9px;
+		}
+
+		.middle-star{
+			height: 4vh;
+			width: 3vw;
+			padding-top: 5px;
+		
+
+		}
+
+		.conteudo-imagem .texto-imagem {
+			font-size: 0.925rem;
+		}
+		.conteudo-imagem .titulo-imagem {
+			font-size: 1.25rem;
+			font-weight: bolder;
+		}
+
+
+
+
 	}
 </style>
