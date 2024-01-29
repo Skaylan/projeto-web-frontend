@@ -2,18 +2,22 @@
 	import iconfunnel from "../../../lib/assets/funnel-outline.svg"
 	import iconAphabeticalOrder from "../../../lib/assets/alphabetical-order.svg"
 	import icontimer from "../../../lib/assets/timer.svg"
-
+	import Cookies from 'js-cookie'
 	import { popup } from '@skeletonlabs/skeleton';
-
+	import { onMount } from "svelte";
+	import { goto } from '$app/navigation'
 	let comboboxValue;
 
+	
 	const popupCombobox = {
 		event: 'click',
 		target: 'popupCombobox',
 		placement: 'bottom',
 		closeQuery: '.listbox-item'
 	};
-				
+	
+	export let data;
+	const { user } = data 
 </script>
 
 <!-- Primeira Seção -->
@@ -35,7 +39,7 @@
 			/>
 		</div>
 		<div class="mt-1 flex items-center justify-center">
-			<h1 class="text-white text-lg font-semibold text-center sm:text-sm md:text-3xl">User Name</h1>
+			<h1 class="text-white text-lg font-semibold text-center sm:text-sm md:text-3xl">{user.name}</h1>
 		</div>
 	</div>
 </div>

@@ -2,6 +2,40 @@
     import HeaderSecundario from "$lib/headerSecundario.svelte";
     import googleLogo from "$lib/assets/google-logo.svg";
     import Logo from "$lib/assets/Logo.png";
+
+    let name;
+    let username;
+    let email;
+    let password;
+    let rePassword;
+
+    // $: console.log(name, username, email, password, rePassword)
+    
+    const handleCreateUserButton = () => {
+        const payload = {
+                "name": name,
+                "username": username,
+                "email": email,
+                "password": password,
+                "re_password": rePassword
+            }
+
+        fetch("http://localhost:5000/api/v1/create_user", {
+            method: "POST",
+            mode: "cors",
+            body: JSON.stringify(payload),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => {
+            return response.json()
+        }).then(data => {
+            console.log(data)
+        }).catch(error => {
+            console.error(error)
+        })
+    }
+
 </script>
 
 <HeaderSecundario />
@@ -17,13 +51,13 @@
             <h3>
                 SEJA BEM-VINDO
             </h3>
-            <input type="text" name="nome" id="inome" placeholder="Nome" max="40" required>
-            <input type="text" name="usuario" id="iusuario" placeholder="Nome de usuário" min="8" max="20" required>
-            <input type="email" name="email" id="iemail" placeholder="Email" required>
-            <input type="password" name="senha" id="isenha" min="8" max="20" placeholder="Senha" required>
-            <input type="password" name="senha2" id="isenha2" min="8" max="20" placeholder="Repetir senha" required>
+            <input bind:value={name} type="text" name="nome" id="inome" placeholder="Nome" max="40" required>
+            <input bind:value={username} type="text" name="usuario" id="iusuario" placeholder="Nome de usuário" min="8" max="20" required>
+            <input bind:value={email} type="email" name="email" id="iemail" placeholder="Email" required>
+            <input bind:value={password} type="password" name="senha" id="isenha" min="8" max="20" placeholder="Senha" required>
+            <input bind:value={rePassword} type="password" name="senha2" id="isenha2" min="8" max="20" placeholder="Repetir senha" required>
 
-            <input type="submit" value="Criar conta">
+            <input on:click={handleCreateUserButton} type="submit" value="Criar conta">
         </form>
 
         <button id="login-google">
