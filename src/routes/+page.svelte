@@ -1,5 +1,6 @@
 <script>
-	import Footer from '../lib/Footer.svelte'
+    import Carrossel from "../lib/carrossel.svelte";
+    import Footer from '../lib/Footer.svelte'
 	import star from '../lib/assets/star.svg'
 	import Header from '../lib/Header.svelte'
 	import HeaderSecundario from '../lib/headerSecundario.svelte'
@@ -81,6 +82,7 @@
 	setInterval(next, interval)
 </script>
 
+<!-- <Header/> -->
 
 <svelte:window bind:innerWidth bind:innerHeight />
 
@@ -138,6 +140,18 @@
 	<button on:click={() => index = 1} class="rounded-[100%] w-[18px] h-[18px] bg-gray-300"></button>
 	<button on:click={() => index = 2} class="rounded-[100%] w-[18px] h-[18px] bg-gray-300"></button>
 </div>
+
+
+<section class="w-[100%]">
+	
+	<div class="titulo flex items-center gap-1 sm:pl-14 p-4 text-5xl">
+		<div class="w-[5px] h-[30px] bg-red-600"></div>
+		<h1>Filmes Amados Pelo Público</h1>
+	</div>
+
+	<Carrossel />
+</section>
+
 
 
 <div class="titulo flex items-center gap-1 sm:pl-14 p-4 text-5xl">
