@@ -59,7 +59,7 @@
             <h3>SEJA BEM-VINDO</h3>
             <input bind:value={email} type="email" name="email" id="iusuario" placeholder="Email" required>
             <input bind:value={password} type="password" name="senha" id="isenha" min="8" max="20" placeholder="Senha" required>
-            <a href="#" id="esqueci-senha">Esqueci minha senha</a>
+            <a href="#/" id="esqueci-senha">Esqueci minha senha</a>
             <input on:click={handleLoginButton} type="submit" value="Login">
         </form>
 
