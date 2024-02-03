@@ -55,11 +55,11 @@
 </script>
 
 <header id="header">
-    <a href="#" on:click="{abreMenu}">
+    <a href="#/" on:click="{abreMenu}">
         <img src="{Menu}" id="imgMenu" alt="Menu">
     </a>
     <div class="logo">
-        <a href="#">
+        <a href="#/">
             <img src="{LogoCorte}" id="logo-branca" alt="Logo">
             <img src="{LogoPreta}" id="logo-preta" alt="">
             
@@ -67,18 +67,18 @@
     </div>
 
     <ul id="lista">
-        <li><a href="#"><img src="{Inicio}" alt="Início" class="iconeMenu">Início</a></li>
-        <li><a href="#"><img src="{Filmes}" alt="Filmes" class="iconeMenu">Filmes</a></li>
-        <li><a href="#"><img src="{Sobre}" alt="Sobre" class="iconeMenu">Sobre</a></li>
-        <li><a href="#"><img src="{API}" alt="API" class="iconeMenu">API</a></li>
+        <li><a href="#/"><img src="{Inicio}" alt="Início" class="iconeMenu">Início</a></li>
+        <li><a href="#/"><img src="{Filmes}" alt="Filmes" class="iconeMenu">Filmes</a></li>
+        <li><a href="#/"><img src="{Sobre}" alt="Sobre" class="iconeMenu">Sobre</a></li>
+        <li><a href="#/"><img src="{API}" alt="API" class="iconeMenu">API</a></li>
 
         {#if (loginPag(pagina))}
-            <li><a href="#"><img src="{Entrar}" alt="Entrar" class="iconeMenu">Entrar</a></li>
+            <li><a href="#/"><img src="{Entrar}" alt="Entrar" class="iconeMenu">Entrar</a></li>
         {/if}
         
     </ul>
     <div class="icon_login">
-        <a href="#">
+        <a href="#/">
             <img src="{IconeLogin}" width="50px" alt="Foto de perfil">
         </a>
     </div>
