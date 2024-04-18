@@ -45,328 +45,43 @@
 
 </script>
 
-<HeaderSecundario  pagina="login" />
-
-<section>
-    <div class="nebula">
-        <img src="{Logo}" alt="Logo">
-
-        <h4>SEU ACERVO DE HISTÓRIAS<br>INCRÍVEIS</h4>
-    </div>
-
-    <div class="form">
-        <form action="#">
-            <h3>SEJA BEM-VINDO</h3>
-            <input bind:value={email} type="email" name="email" id="iusuario" placeholder="Email" required>
-            <input bind:value={password} type="password" name="senha" id="isenha" min="8" max="20" placeholder="Senha" required>
-            <a href="#/" id="esqueci-senha">Esqueci minha senha</a>
-            <input on:click={handleLoginButton} type="submit" value="Login">
-        </form>
-
-        <button id="login-google">
-            <img src="{googleLogo}" alt="Ícone google">
-            <p>Login com Google</p>
-        </button>     
-    </div>
-</section>
-
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
-
-    /* Section */
-
-    section {
-        display: flex;
-        margin: 70px auto;
-        width: 1022px;
-        height: 702px;
-        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.665);
-        border-radius: 5px;
-    }
-
-
-    /* Section esquerda */
-
-    .nebula {
-        display: flex;
-        flex-flow: column wrap;
-        align-items: center;
-        text-align: center;
-        justify-content: center;
-        height: 100%;
-        width: 50vw;
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
-        background: #75C9C8 url(../../lib/assets/invertido.png) no-repeat center;
-        background-size: contain;
-        background-position: -215px center;
-
-    }
-
-    .nebula > h4 {
-        font-size: 20px;
-        font-family: 'Hanalei Fill', sans-serif;
-        letter-spacing: 0.1em;
-        text-shadow: 2px 2px 2px white;
-    }
-
-    section img {
-        display: block;
-        width: 90%;
-        margin-left: 15px;
-    }
-
-
-    /* Section direita */ 
-
-    .form {
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: center;
-        margin-top: -80px;
-        width: 50vw;
-        background: url(../../lib/assets/catbus_running.png) no-repeat;
-        background-position: center bottom;
-        background-size: 50%;
-    }
-
-    .form h3 {
-        font-size: 40px;
-        font-family: 'Hanalei Fill', sans-serif;
-        margin-bottom: 30px;
-    }
-
-    .form input {
-        display: block;
-        padding: 13px 13px 13px 20px;
-        margin: 10px auto 15px auto;
-        font-size: 20px;
-        width: 350px;
-        height: 55px;
-        border-radius: 3px;
-        border: none;
-        box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.41);
-    }
-
-    .form input::placeholder {
-        font-family: 'Inter', sans-serif;
-        font-size: 20px;
-        font-weight: 400px;
-    }
-
-    form {
-        padding: 10px;
-        text-align: center;
-    }
-
-
-    form > a#esqueci-senha {
-        display: block;
-        width: 370px;
-        margin: auto;
-        text-align: right;
-        font-size: 15px;
-        font-family: 'Roboto', sans-serif;
-
-    }
-
-    form > input[type="submit"] {
-        background-color: #4BC74F;
-        font-family: 'Roboto', sans-serif;
-        font-size: 24px;
-        font-weight: 400;
-        color: white;
-        margin-top: 30px;
-        padding: 13px;
-        cursor: pointer;
-    }
-
-    button#login-google {
-        color: white;
-        display: block;
-        margin: 10px auto 80px auto;
-        width: 60%;
-        padding: 10px;
-        background-color: #FA2020;
-        border: none;
-        border-radius: 5px;
-        box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.639);
-    }
-
-    button#login-google > p {
-        font-size: 24px;
-        font-family: 'Roboto', sans-serif;
-    }
-
-    button#login-google > img {
-        position: relative;
-        display: inline-block;
-        width: 23px;
-        margin: 5px auto auto auto;
-        margin-right: 5px;
-    }
-
-    button#login-google > p {
-        position: relative;
-        display: inline;
-        bottom: 2px;
-    }
-
-    li#entrar {
-        display: none;
-    }
-
-
-    /* Responsividade */
-
-    /* Abaixo de 625px */
-
-    @media screen and (max-width: 625px) {
-
-        body {
-            margin: auto;
-        }
-        section {
-            align-items: center;
-            width: 355px;
-            height: 510px;;
-        }
-
-        .nebula {
-            display: none;
-        }
-
-
-        /* Section */
-
-        .form {
-            display: flex;
-            justify-content: normal;
-            margin: 10px auto;
-            align-items: center;
-            background: none;
-        }
-
-        .form h3 {
-            font-size: 30px;
-        }
-        
-        .form input {
-            display: block;
-            padding: 3px 10px 3px 20px;
-            margin: 10px auto 15px auto;
-            font-size: 15px;
-            width: 255px;
-            height: 55px;
-            border-radius: 3px;
-            border: none;
-            box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.41);
-            
-        }
-
-        .form input::placeholder {
-            font-size: 15px;
-        }
-
-        form > a#esqueci-senha {
-            margin-top: 30px;
-            text-align: center;
-
-        }
-
-        button#login-google {
-            display: block;
-            width: 195px;
-            margin-bottom: 50px;
-        }
-
-        button#login-google > p {
-            font-size: 15px;
-            position: relative;
-            display: inline;
-            bottom: 7px;
-        }
-
-        form > input[type="submit"] {
-            font-size: 20px;
-        }
-    }
-
-    
-    /* Abaixo de 1120px */
-
-    @media screen and (min-width: 625px) and (max-width: 1120px) {
-            
-        section {
-            flex-direction: column;
-            justify-content: space-between;
-            width: 60%;
-            min-width: 550px;
-            max-width: 660px;;
-        }
-
-        .nebula {
-            display: flex;
-            width: 100%;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-            background: #75C9C8 url(../../lib/assets/invertido.png);
-            
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: -15%;
-        }
-
-        .nebula img {
-            margin-top: 30px;
-            width: 80%;
-        }
-
-        .nebula > h4 {
-            font-size: 20px;
-            font-family: 'Hanalei Fill', sans-serif;
-            margin-top: 10px;
-            letter-spacing: 0.1em;
-            text-shadow: 2px 2px 2px white;
-        }
-            
-
-        .form {
-            margin: auto;
-            align-items: center;
-            background: none;
-        }
-
-        .form h3 {
-            margin-top: 10px;
-            font-size: 30px;
-        }
-
-        .form input {
-            padding: 3px 3px 3px 15px;
-        }
-
-        button#login-google {
-            display: block;
-            width: 300px;
-            max-width: 350px;
-            margin-bottom: 50px;
-        }
-
-        button#login-google > p {
-            font-size: 20px;
-            position: relative;
-            display: inline;
-            bottom: 5px;
-        }
-
-        form > a#esqueci-senha {
-            margin-top: 30px;
-            text-align: center;
-
-        }
-    }
-
 </style>
+
+<HeaderSecundario  pagina="login" />
+
+<section class="flex flex-col h-svh items-center justify-center">
+    <div class="flex-col w-[80%] h-[20rem] shadow-xl p-4">
+        <div class="flex justify-center items-center h-[5em]">
+            <h3 class="font-">SEJA BEM-VINDO</h3>
+        </div>
+
+        <div class=" p-3">
+            <div class="flex flex-col gap-2 items-center">
+                <div>
+                    <input class="w-[15rem] h-[1.7rem] pl-1 rounded-md shadow-md" bind:value={email} type="email" name="email" id="iusuario" placeholder="Email" required>
+                </div>
+                <div>
+                    <input class="w-[15rem] h-[1.7rem] rounded-md pl-1 shadow-md" bind:value={password} type="password" name="senha" id="isenha" min="8" max="20" placeholder="Senha" required>
+                    <div class="flex justify-end pt-[4px]">
+                        <a class="text-[11px] hover:underline text-cyan-800 pr-2" href="#/" id="esqueci-senha">Esqueci minha senha</a>
+                    </div>
+                </div>
+            </div> 
+
+            <div class="flex gap-3 items-center justify-center p-5">
+                <button class="h-[2rem] w-[5rem] rounded-md bg-green-500">
+                    <span class="text-white">login</span>
+                </button>
+                <button class="flex justify-center gap-1 items-center h-[2rem] w-[5rem] rounded-md bg-red-600">
+                    <div class="">
+                        <img class="w-[16px] h-[16px]" src="{googleLogo}" alt="Ícone google">
+                    </div>
+                    <span class="text-white">login</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
