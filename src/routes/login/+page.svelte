@@ -6,6 +6,7 @@
     import Cookies from 'js-cookie'
     import { goto } from '$app/navigation'
     import { jwtDecode } from 'jwt-decode';
+	import { Stethoscope } from "lucide-svelte";
 
     let name;
     let username;
@@ -45,17 +46,12 @@
 
 </script>
 
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-</style>
-
 <HeaderSecundario  pagina="login" />
 
-<section class="flex flex-col h-svh items-center justify-center">
+<section class="flex flex-col h-lvh items-center justify-center">
     <div class="flex-col w-[80%] h-[20rem] shadow-xl p-4">
         <div class="flex justify-center items-center h-[5em]">
-            <h3 class="font-">SEJA BEM-VINDO</h3>
+            <h3 class="font-hanalei text-3xl">SEJA BEM-VINDO</h3>
         </div>
 
         <div class=" p-3">
@@ -72,10 +68,10 @@
             </div> 
 
             <div class="flex gap-3 items-center justify-center p-5">
-                <button class="h-[2rem] w-[5rem] rounded-md bg-green-500">
+                <button class="h-[2rem] w-[5rem] rounded-md bg-green-500 transition transform hover:ease-in duration-300  hover:scale-110">
                     <span class="text-white">login</span>
                 </button>
-                <button class="flex justify-center gap-1 items-center h-[2rem] w-[5rem] rounded-md bg-red-600">
+                <button class="flex justify-center gap-1 items-center h-[2rem] w-[5rem] rounded-md bg-red-600 transform hover:ease-in duration-300  hover:scale-110">
                     <div class="">
                         <img class="w-[16px] h-[16px]" src="{googleLogo}" alt="Ícone google">
                     </div>

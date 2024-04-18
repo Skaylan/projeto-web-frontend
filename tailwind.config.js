@@ -18,7 +18,11 @@ export default {
 		)
 	],
 	theme: {
-		extend: {},
+		extend: {
+			fontFamily:{
+				hanalei:['Hanalei','sens-serif']
+			}
+		},
 	},
 	plugins: [
 		// 4. Append the Skeleton plugin (after other plugins)
