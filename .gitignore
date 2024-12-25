@@ -19,3 +19,5 @@ vite.config.ts.timestamp-*
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 **/.history
+
+pnpm-lock.yaml
