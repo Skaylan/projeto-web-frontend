@@ -1,6 +1,5 @@
 <script>
 	import { Motion, useDragControls, useMotionValue, useVelocity } from 'svelte-motion';
-	import Device from 'svelte-device-info';
 	import MovieCard from './MovieCard.svelte';
 	const dragControls = useDragControls();
 	let divWidth = 0
