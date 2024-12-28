@@ -2,19 +2,8 @@
 	import pageIcon from '../lib/assets/page-icon.svg';
 	import { Search } from 'lucide-svelte';
 
-	const labels = [
-		'Titulo',
-		'Titulo original',
-		'Descrição',
-		'Diretor',
-		'Estúdio',
-		'Produtor',
-		'Nota',
-		'Tempo de exibição',
-		'Data de lancamento',
-	];
+	export let labels;
 
-	const movies = ['A fuga das galinhas', 'Lucas o intruso no formigueiro', 'tropa do coco', 'skin de rico', 'varios outros', 'as longas transças do careca'];
 	const categories = ['Terror', 'Sacanagem', 'Ação', 'Comédia', 'Drama', 'Ficção Científica'];
 	const uploadTypes = ['Banner', 'Poster'];
 </script>
@@ -25,9 +14,9 @@
 		<section class="sm:w-[60%]">
 			<div class="flex justify-center w-full">
 				<div class="flex flex-col items-center p-2 w-[90%] sm:w-full bg-[#F2F2F2] rounded-lg">
-                    <div class="w-full flex justify-start pl-5 text-2xl">
-                        <span>Informações do filme</span>
-                    </div>
+					<div class="w-full flex justify-start pl-5 text-2xl">
+						<span>Informações do filme</span>
+					</div>
 					<!-- Campos do formulário -->
 					{#each labels as label}
 						<div class="w-[90%]">
@@ -53,13 +42,15 @@
 								</div>
 
 								<div class="overflow-y-scroll max-h-40 w-full">
-                                    {#each categories as category, index}
-                                        <div class="flex justify-between items-center w-full px-2 py-2 bg-white rounded-md mb-2">
-                                            <label for={`cat${index}`}>{category}</label>
-                                            <input type="checkbox" id={`cat${index}`} />
-                                        </div>
-                                    {/each}
-                                </div>
+									{#each categories as category, index}
+										<div
+											class="flex justify-between items-center w-full px-2 py-2 bg-white rounded-md mb-2"
+										>
+											<label for={`cat${index}`}>{category}</label>
+											<input type="checkbox" id={`cat${index}`} />
+										</div>
+									{/each}
+								</div>
 							</div>
 						</div>
 						<!-- Upload -->
@@ -85,15 +76,15 @@
 						</div>
 					</div>
 
-                    <!-- Botões -->
-                    <div class="flex justify-center gap-4 mt-4 w-full">
-                        <button
-                            class="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
-                            type="button"
-                        >
-                            Salvar
-                        </button>
-                    </div>
+					<!-- Botões -->
+					<div class="flex justify-center gap-4 mt-4 w-full">
+						<button
+							class="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
+							type="button"
+						>
+							Salvar
+						</button>
+					</div>
 				</div>
 			</div>
 		</section>
