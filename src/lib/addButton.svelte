@@ -1,70 +1,100 @@
+<script>
+	import pageIcon from '../lib/assets/page-icon.svg';
+	import { Search } from 'lucide-svelte';
 
-<div class="bg-slate-800 w-full h-auto flex flex-col items-center p-2 gap-2">
-    <div class="bg-slate-500 w-auto h-auto">
-        <img class="object-fill" src="https://placehold.co/1024x500" alt="">
-    </div>
+	const labels = [
+		'Titulo',
+		'Titulo original',
+		'Descrição',
+		'Diretor',
+		'Estúdio',
+		'Produtora',
+		'Nota',
+		'Tempo'
+	];
 
-    <div class="bg-slate-400 w-[100%] gap-4 md:flex justify-center">
-        <div class=" flex justify-center p-3 md:w-[30%]">
-            <div class="bg-slate-400">
-                <img src="https://placehold.co/200x300" alt="">
-            </div>
-        </div>
+	const movies = ['A fuga das galinhas', 'Lucas e o formigueiro', 'tropa do coco', 'skin de rico', 'varios outros', 'as longas transças do careca'];
+	const categories = ['Terror', 'Sacanagem', 'Ação', 'Comédia', 'Drama', 'Ficção Científica'];
+	const uploadTypes = ['Banner', 'Poster'];
+</script>
 
-        <div class="bg-slate-500 w-[100%] h-[30rem] overflow-y-scroll md:w-[60%]">
-            <div class="p-2 flex flex-col">
-                <span>titulo</span>
-                <input type="text">
-            </div>
-            <div class="p-2 flex flex-col">
-                <span>titulo original</span>
-                <input type="text">
-            </div>
-            <div class="p-2 flex flex-col">
-                <span>Descrição</span>
-                <textarea class="focus:h-[10rem] h-[25px] resize-none" cols="30" rows="10"></textarea>
-            </div>
-            <div class="p-2 flex flex-col">
-                <span>Estúdio</span>
-                <input type="text">
-            </div>
-            <div class="p-2 flex flex-col">
-                <span>Diretor</span>
-                <input type="text">
-            </div>
-            <div class="p-2 flex flex-col">
-                <span>Produtora</span>
-                <input type="text">
-            </div>
-            <div class="p-2 flex flex-col">
-                <span>Nota</span>
-                <input type="text">
-            </div>
-            <div class="p-2 flex flex-col">
-                <span>Tempo</span>
-                <input type="text">
-            </div>
-            <div class="p-2 flex flex-col">
-                <span>Gênero</span>
-                <div class="bg-white pl-4">
-                    <div>
-                        <span>Terror</span>
-                        <input type="checkbox" name="Terror">
+<body class="flex flex-col w-full">
+	<div class="flex flex-col gap-2 sm:flex-row sm:justify-center">
+		<!-- Formulário -->
+		<section class="sm:w-[60%]">
+			<div class="flex justify-center w-full">
+				<div class="flex flex-col items-center p-2 w-[90%] sm:w-full bg-[#F2F2F2] rounded-lg">
+                    <div class="w-full flex justify-start pl-5 text-2xl">
+                        <span>Informações do filme</span>
                     </div>
-                    <div>
-                        <span>Romance</span>
-                        <input type="checkbox" name="Romance">
+					<!-- Campos do formulário -->
+					{#each labels as label}
+						<div class="w-[90%]">
+							<span>{label}</span>
+							<div class="h-8">
+								<input class="w-full h-full rounded-lg shadow-custom" type="text" />
+							</div>
+						</div>
+					{/each}
+
+					<!-- Gênero -->
+					<div class="flex items-center flex-col w-[90%] lg:flex-row-reverse">
+						<div class="w-[90%]">
+							<span>Gênero</span>
+							<div class="flex items-center flex-col p-2 bg-[#75C9C8] rounded-md">
+								<div class="flex items-center w-full h-8 m-2">
+									<input
+										class="w-full pl-3 h-full rounded-lg shadow-custom bg-[#F2F2F2]"
+										type="search"
+										placeholder="Buscar..."
+									/>
+									<Search size="32" />
+								</div>
+
+								<div class="overflow-y-scroll max-h-40 w-full">
+                                    {#each categories as category, index}
+                                        <div class="flex justify-between items-center w-full px-2 py-2 bg-white rounded-md mb-2">
+                                            <label for={`cat${index}`}>{category}</label>
+                                            <input type="checkbox" id={`cat${index}`} />
+                                        </div>
+                                    {/each}
+                                </div>
+							</div>
+						</div>
+						<!-- Upload -->
+						<div class="w-full h-full">
+							<section class="flex gap-3 items-center h-full lg:flex-row p-2">
+								{#each uploadTypes as type, i}
+									<div class="flex justify-center w-[90%] relative lg:h-70">
+										<input
+											class="absolute top-0 left-0 w-full h-full bg-white opacity-0 cursor-pointer"
+											type="file"
+											id={`fileInput${i}`}
+										/>
+										<label
+											for={`fileInput${i}`}
+											class="flex justify-center items-center px-4 py-2 bg-blue-500 text-white rounded cursor-pointer"
+										>
+											Upload {type}
+											<img class="w-5 h-5" src={pageIcon} alt="" />
+										</label>
+									</div>
+								{/each}
+							</section>
+						</div>
+					</div>
+
+                    <!-- Botões -->
+                    <div class="flex justify-center gap-4 mt-4 w-full">
+                        <button
+                            class="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
+                            type="button"
+                        >
+                            Salvar
+                        </button>
                     </div>
-                    <div>
-                        <span>Ação</span>
-                        <input type="checkbox" name="Acao">
-                    </div>
-                    <div>
-                        <span>Sacanagem</span>
-                        <input type="checkbox" name="Acao">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
