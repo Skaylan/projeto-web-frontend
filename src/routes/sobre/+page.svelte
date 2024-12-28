@@ -1,7 +1,8 @@
 <script>
-	import Header from '$lib/Header.svelte';
+  import Header from '$lib/Header.svelte';
 	import Footer from '$lib/Footer.svelte';
 	import Banner from '../../lib/assets/Banner.png';
+
 </script>
 
 <section>
