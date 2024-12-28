@@ -1,44 +1,28 @@
 <script>
-    import Header from "$lib/Header.svelte"
-    import Footer from "$lib/Footer.svelte"
-    // import Banner from "../../lib/assets/Banner.png"
-    
+  import Header from '$lib/Header.svelte';
+	import Footer from '$lib/Footer.svelte';
+	import Banner from '../../lib/assets/Banner.png';
+
 </script>
 
-
-
-
-
-
 <section>
-    
+	<Header />
 
-    <Header/>
-  
-<div class="text">
-    <h2>OBJETIVO DO PROJETINHO</h2>
-</div>
-
-    
-
-
+	<div class="text">
+		<h2>OBJETIVO DO PROJETINHO</h2>
+	</div>
 </section>
 
-
-<Footer/>
-
-
+<Footer />
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-* {
+	@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+	* {
+		background-color: black;
+	}
 
-    background-color: black;
-}
-
-.text {
-    color: #FFF;
-text-align: center;
-}
-
+	.text {
+		color: #fff;
+		text-align: center;
+	}
 </style>

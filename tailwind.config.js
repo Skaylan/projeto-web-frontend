@@ -18,7 +18,11 @@ export default {
 		)
 	],
 	theme: {
-		extend: {},
+		extend: {
+			boxShadow:{
+				'custom': '0 4px 3px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
+			},
+		},
 	},
 	plugins: [
 		// 4. Append the Skeleton plugin (after other plugins)
