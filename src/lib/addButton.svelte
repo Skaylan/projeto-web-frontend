@@ -8,12 +8,13 @@
 		'Descrição',
 		'Diretor',
 		'Estúdio',
-		'Produtora',
+		'Produtor',
 		'Nota',
-		'Tempo'
+		'Tempo de exibição',
+		'Data de lancamento',
 	];
 
-	const movies = ['A fuga das galinhas', 'Lucas e o formigueiro', 'tropa do coco', 'skin de rico', 'varios outros', 'as longas transças do careca'];
+	const movies = ['A fuga das galinhas', 'Lucas o intruso no formigueiro', 'tropa do coco', 'skin de rico', 'varios outros', 'as longas transças do careca'];
 	const categories = ['Terror', 'Sacanagem', 'Ação', 'Comédia', 'Drama', 'Ficção Científica'];
 	const uploadTypes = ['Banner', 'Poster'];
 </script>
