@@ -1,100 +1,80 @@
 <script>
 	import pageIcon from '../lib/assets/page-icon.svg';
 	import { Search } from 'lucide-svelte';
+	import { onMount } from 'svelte';
 
-	const labels = [
-		'Titulo',
-		'Titulo original',
-		'Descrição',
-		'Diretor',
-		'Estúdio',
-		'Produtora',
-		'Nota',
-		'Tempo'
-	];
+	import FormComponent from './movieForm.svelte';
 
-	const movies = ['A fuga das galinhas', 'Lucas e o formigueiro', 'tropa do coco', 'skin de rico', 'varios outros', 'as longas transças do careca'];
-	const categories = ['Terror', 'Sacanagem', 'Ação', 'Comédia', 'Drama', 'Ficção Científica'];
-	const uploadTypes = ['Banner', 'Poster'];
+	let movieTitle = '';
+	let movieOriginal_title = '';
+	let movieRomanized_original_title = '';
+	let movieDescription = '';
+	let movieStudio = '';
+	let movieDirector = '';
+	let movieProducer = '';
+	let movieRating = '';
+	let movieLounch_date = '';
+	let movieRunning_time = '';
+
+	async function submitMovie() {
+		const movie = {
+			title: movieTitle,
+			original_title: movieOriginal_title,
+			romanized_original_title: movieRomanized_original_title,
+			description: movieDescription,
+			studio: movieStudio,
+			director: movieDirector,
+			producer: movieProducer,
+			rating: movieRating,
+			lounch_date: movieLounch_date,
+			running_time: movieRunning_time
+		};
+
+		try {
+			const response = await fetch('http://localhost:5000/api/v1/add_movie', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(movie)
+			});
+
+			if (!response.ok) {
+				throw new Error('Erro ao enviar os dados.');
+			}
+
+			const result = await response.json();
+			console.log('Dados enviados com sucesso:', result);
+		} catch (error) {
+			console.error('Erro ao enviar dados:', error);
+		}
+	}
 </script>
 
-<body class="flex flex-col w-full">
-	<div class="flex flex-col gap-2 sm:flex-row sm:justify-center">
-		<!-- Formulário -->
-		<section class="sm:w-[60%]">
-			<div class="flex justify-center w-full">
-				<div class="flex flex-col items-center p-2 w-[90%] sm:w-full bg-[#F2F2F2] rounded-lg">
-                    <div class="w-full flex justify-start pl-5 text-2xl">
-                        <span>Informações do filme</span>
-                    </div>
-					<!-- Campos do formulário -->
-					{#each labels as label}
-						<div class="w-[90%]">
-							<span>{label}</span>
-							<div class="h-8">
-								<input class="w-full h-full rounded-lg shadow-custom" type="text" />
-							</div>
-						</div>
-					{/each}
+<div class="flex flex-col items-center w-full">
+	<div class="lg:w-[90%]">
+		<FormComponent
+			bind:title={movieTitle}
+			bind:original_title={movieOriginal_title}
+			bind:romanized_original_title={movieRomanized_original_title}
+			bind:description={movieDescription}
+			bind:studio={movieStudio}
+			bind:director={movieDirector}
+			bind:producer={movieProducer}
+			bind:rating={movieRating}
+			bind:lounch_date={movieLounch_date}
+			bind:running_time={movieRunning_time}
+		/>
 
-					<!-- Gênero -->
-					<div class="flex items-center flex-col w-[90%] lg:flex-row-reverse">
-						<div class="w-[90%]">
-							<span>Gênero</span>
-							<div class="flex items-center flex-col p-2 bg-[#75C9C8] rounded-md">
-								<div class="flex items-center w-full h-8 m-2">
-									<input
-										class="w-full pl-3 h-full rounded-lg shadow-custom bg-[#F2F2F2]"
-										type="search"
-										placeholder="Buscar..."
-									/>
-									<Search size="32" />
-								</div>
-
-								<div class="overflow-y-scroll max-h-40 w-full">
-                                    {#each categories as category, index}
-                                        <div class="flex justify-between items-center w-full px-2 py-2 bg-white rounded-md mb-2">
-                                            <label for={`cat${index}`}>{category}</label>
-                                            <input type="checkbox" id={`cat${index}`} />
-                                        </div>
-                                    {/each}
-                                </div>
-							</div>
-						</div>
-						<!-- Upload -->
-						<div class="w-full h-full">
-							<section class="flex gap-3 items-center h-full lg:flex-row p-2">
-								{#each uploadTypes as type, i}
-									<div class="flex justify-center w-[90%] relative lg:h-70">
-										<input
-											class="absolute top-0 left-0 w-full h-full bg-white opacity-0 cursor-pointer"
-											type="file"
-											id={`fileInput${i}`}
-										/>
-										<label
-											for={`fileInput${i}`}
-											class="flex justify-center items-center px-4 py-2 bg-blue-500 text-white rounded cursor-pointer"
-										>
-											Upload {type}
-											<img class="w-5 h-5" src={pageIcon} alt="" />
-										</label>
-									</div>
-								{/each}
-							</section>
-						</div>
-					</div>
-
-                    <!-- Botões -->
-                    <div class="flex justify-center gap-4 mt-4 w-full">
-                        <button
-                            class="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
-                            type="button"
-                        >
-                            Salvar
-                        </button>
-                    </div>
-				</div>
-			</div>
-		</section>
+		<!-- Botões -->
+		<div class="flex justify-center gap-4 mt-4 w-full">
+			<button
+				class="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
+				type="button"
+				on:click={submitMovie}
+			>
+				Salvar
+			</button>
+		</div>
 	</div>
-</body>
+</div>

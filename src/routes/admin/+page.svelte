@@ -5,6 +5,7 @@
 	import AditComponent from '../../lib/editButton.svelte';
 	import UserComponent from '../../lib/userButton.svelte';
 	import EditButton from '../../lib/editButton.svelte';
+	import { onMount } from 'svelte';
 
 	let addButtonVisible = EditButton;
 
@@ -20,6 +21,9 @@
 		addButtonVisible = UserComponent;
 	}
 
+    export let data;
+	const { img } = data 
+
 </script>
 
 <HeaderSecundario />
@@ -34,7 +38,7 @@
                         class="p-2 rounded-lg hover:bg-[#75C9C8] sm:hover:bg-[#ffffff]"
                         on:click={addComponentButton}
                     >
-                        Adicionar
+                        Adicionar Filmes
                     </button>
                 </li>
                 <li>
@@ -58,12 +62,19 @@
             </ul>
         </div>
     </div>
+
+    
+    <img src={`data:image/jpeg;base64,${data.img}`} alt="">
+
 </section>
 
-{#if addButtonVisible === AddComponent}
-	<AddComponent />
-{:else if addButtonVisible === AditComponent}
-	<AditComponent />
-{:else if addButtonVisible === UserComponent}
-	<UserComponent />
-{/if}
+
+<div class="flex justify-center">
+    {#if addButtonVisible === AddComponent}
+        <AddComponent />
+    {:else if addButtonVisible === AditComponent}
+        <AditComponent />
+    {:else if addButtonVisible === UserComponent}
+        <UserComponent />
+    {/if}
+</div>
