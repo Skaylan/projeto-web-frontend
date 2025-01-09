@@ -18,9 +18,11 @@
 	export let rating = '';
 	export let lounch_date = '';
 	export let running_time = '';
-	//  export let category_id = '';
 
 	let data = [];
+	export let activeCategories = [];
+
+	console.log(activeCategories)
 
 	function handleImageChange(event, field) {
 		const selectedFile = event.target.files[0];
@@ -39,6 +41,20 @@
 		}
 	}
 
+	function handleCheckboxChange(event) {
+		const categoryId = event.target.value;
+		if (event.target.checked) {
+			// Adiciona o ID à array de categorias ativas
+			if (!activeCategories.includes(categoryId)) {
+				activeCategories.push(categoryId);
+			}
+		} else {
+			// Remove o ID da array de categorias ativas
+			activeCategories = activeCategories.filter(id => id !== categoryId);
+		}
+		console.log('Categorias ativas:', activeCategories);
+	}
+
 	onMount(async () => {
 		try {
 			const response = await fetch('http://localhost:5000/api/v1/get_categories');
@@ -55,6 +71,7 @@
 		}
 	});
 </script>
+
 
 <div class="flex flex-col gap-2 sm:flex-row sm:justify-center">
 	<!-- Formulário -->
@@ -191,19 +208,23 @@
 							</div>
 
 							<div class="overflow-y-scroll max-h-40 w-full">
-                                {#if data.length > 0}
-                                    {#each data as category, index}
-                                        <div
-                                            class="flex justify-between items-center w-full px-2 py-2 bg-white rounded-md mb-2"
-                                        >
-                                            <label for="category-{index}">{category.name}</label>
-                                            <input type="checkbox" id="category-{index}" />
-                                        </div>
-                                    {/each}
-                                {:else}
-                                    <p>Loading categories...</p>
-                                {/if}
-                            </div>
+								{#if data.length > 0}
+									{#each data as category, index}
+										<div class="flex justify-between items-center w-full px-2 py-2 bg-white rounded-md mb-2">
+											<label for="category-{index}">{category.name}</label>
+											<input
+												type="checkbox"
+												id="category-{index}"
+												value={category.id}
+												on:change={handleCheckboxChange}
+											/>
+										</div>
+									{/each}
+								{:else}
+									<p>Loading categories...</p>
+								{/if}
+							</div>
+							
 						</div>
 					</div>
 					<!-- Upload -->

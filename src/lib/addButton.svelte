@@ -5,6 +5,9 @@
 
 	import FormComponent from './movieForm.svelte';
 
+	let movieImageOneBase64 = '';
+	let movieImageTwoBase64 = '';
+
 	let movieTitle = '';
 	let movieOriginal_title = '';
 	let movieRomanized_original_title = '';
@@ -15,6 +18,7 @@
 	let movieRating = '';
 	let movieLounch_date = '';
 	let movieRunning_time = '';
+	let movieCategories = [];
 
 	async function submitMovie() {
 		const movie = {
@@ -26,8 +30,11 @@
 			director: movieDirector,
 			producer: movieProducer,
 			rating: movieRating,
-			lounch_date: movieLounch_date,
-			running_time: movieRunning_time
+			launch_date: movieLounch_date,
+			running_time: movieRunning_time,
+			categories: movieCategories,
+			banner_img_base64: movieImageOneBase64,
+			poster_img_base64: movieImageTwoBase64,
 		};
 
 		try {
@@ -64,6 +71,9 @@
 			bind:rating={movieRating}
 			bind:lounch_date={movieLounch_date}
 			bind:running_time={movieRunning_time}
+			bind:imageOneBase64={movieImageOneBase64}
+			bind:imageTwoBase64={movieImageTwoBase64}
+			bind:activeCategories={movieCategories}
 		/>
 
 		<!-- Botões -->

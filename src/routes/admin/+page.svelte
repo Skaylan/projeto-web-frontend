@@ -64,7 +64,7 @@
     </div>
 
     
-    <img src={`data:image/jpeg;base64,${data.img}`} alt="">
+    <!-- <img src={`data:image/jpeg;base64,${data.img}`} alt=""> -->
 
 </section>
 
