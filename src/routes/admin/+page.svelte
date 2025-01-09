@@ -72,8 +72,8 @@
 <div class="flex justify-center">
     {#if addButtonVisible === AddComponent}
         <AddComponent />
-    {:else if addButtonVisible === AditComponent}
-        <AditComponent />
+    {:else if addButtonVisible === EditComponent}
+        <EditButton />
     {:else if addButtonVisible === UserComponent}
         <UserComponent />
     {/if}
