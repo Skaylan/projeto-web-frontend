@@ -2,7 +2,7 @@
 	import HeaderSecundario from '../../lib/headerSecundario.svelte';
 
 	import AddComponent from '../../lib/addButton.svelte';
-	import AditComponent from '../../lib/editButton.svelte';
+	import EditComponent from '../../lib/editButton.svelte';
 	import UserComponent from '../../lib/userButton.svelte';
 	import EditButton from '../../lib/editButton.svelte';
 	import { onMount } from 'svelte';
@@ -14,7 +14,7 @@
 	}
 
 	function editComponentButton() {
-		addButtonVisible = AditComponent;
+		addButtonVisible = EditComponent;
 	}
 
 	function userComponentButton() {

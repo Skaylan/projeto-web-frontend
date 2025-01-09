@@ -13,8 +13,8 @@
         </a>
     </div>
     <div class="w-[80%] pr-4 text-3xl text-white">
-        <nav>
-            <ul class="flex gap-4 items-center justify-end">
+        <nav class="flex items-center justify-end w-full">
+            <ul class="flex gap-28 items-center justify-end">
                 <li><a href="#/">Inicio</a></li>
                 <li><a href="#/">Filmes</a></li>
                 <li><a href="#/">Sobre</a></li>
