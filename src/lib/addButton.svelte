@@ -34,7 +34,7 @@
 			running_time: movieRunning_time,
 			categories: movieCategories,
 			banner_img_base64: movieImageOneBase64,
-			poster_img_base64: movieImageTwoBase64,
+			poster_img_base64: movieImageTwoBase64
 		};
 
 		try {
@@ -59,7 +59,7 @@
 </script>
 
 <div class="flex flex-col items-center w-full">
-	<div class="lg:w-[90%]">
+	<div class="w-[90%]">
 		<FormComponent
 			bind:title={movieTitle}
 			bind:original_title={movieOriginal_title}
@@ -77,13 +77,12 @@
 		/>
 
 		<!-- Botões -->
-		<div class="flex justify-center gap-4 mt-4 w-full">
+		<div class="mt-6 flex items-center justify-end gap-x-6">
 			<button
-				class="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
-				type="button"
 				on:click={submitMovie}
-			>
-				Salvar
+				type="submit"
+				class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+				>Salvar
 			</button>
 		</div>
 	</div>
