@@ -63,7 +63,7 @@
 <div class="flex flex-col w-[90%]">
 	<div class="flex flex-col gap-2 sm:flex-row sm:justify-center">
 		<!-- Filmes cadastrados -->
-		<section class="flex justify-center bg-teal-300 sm:w-[30%] md:w-[40%]">
+		<section class="flex justify-center  sm:w-[30%] md:w-[40%]">
 			<div class="flex flex-col items-center gap-2 w-[90%] p-2 rounded-lg">
 				<div class="flex justify-start w-full text-xl">
 					<span>Filmes cadastrados</span>
@@ -77,7 +77,7 @@
 					<Search size="32" />
 				</div>
 
-				<div class="overflow-y-scroll max-h-40 w-full">
+				<div class="overflow-y-scroll max-h-40 w-full ">
 					{#each movies as movie}
 						<div class="flex flex-col gap-2 w-full rounded-lg">
 							<div class="flex items-center p-1 my-1 w-full bg-white rounded-lg shadow-custom">
