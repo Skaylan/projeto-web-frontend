@@ -4,10 +4,8 @@
 	import AddComponent from '../../lib/addButton.svelte';
 	import EditComponent from '../../lib/editButton.svelte';
 	import UserComponent from '../../lib/userButton.svelte';
-	import EditButton from '../../lib/editButton.svelte';
-	import { onMount } from 'svelte';
 
-	let addButtonVisible = EditButton;
+	let addButtonVisible = AddComponent;
 
 	function addComponentButton() {
 		addButtonVisible = AddComponent;
@@ -30,7 +28,7 @@
 
 <section>
     <div class="flex justify-center py-5">
-        <div class="w-[90%] rounded-lg px-2 sm:bg-[#75C9C8]">
+        <div class="w-[90%] rounded-lg px-1 sm:bg-[#75C9C8]">
             <ul class="flex justify-between sm:justify-start gap-10">
                 <li>
                     <button
@@ -62,18 +60,13 @@
             </ul>
         </div>
     </div>
-
-    
-    <!-- <img src={`data:image/jpeg;base64,${data.img}`} alt=""> -->
-
 </section>
-
 
 <div class="flex justify-center">
     {#if addButtonVisible === AddComponent}
         <AddComponent />
     {:else if addButtonVisible === EditComponent}
-        <EditButton />
+        <EditComponent />
     {:else if addButtonVisible === UserComponent}
         <UserComponent />
     {/if}
