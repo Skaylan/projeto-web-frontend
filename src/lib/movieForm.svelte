@@ -19,11 +19,7 @@
 	export let lounch_date = '';
 	export let running_time = '';
 
-	let data = [];
 	export let activeCategories = [];
-
-	console.log(activeCategories);
-
 	function handleImageChange(event, field) {
 		const selectedFile = event.target.files[0];
 		if (selectedFile) {
@@ -42,15 +38,17 @@
 	function handleCheckboxChange(event) {
 		const categoryId = event.target.value;
 		if (event.target.checked) {
-			// Adiciona o ID à array de categorias ativas
 			if (!activeCategories.includes(categoryId)) {
 				activeCategories.push(categoryId);
 			}
 		} else {
-			// Remove o ID da array de categorias ativas
 			activeCategories = activeCategories.filter((id) => id !== categoryId);
 		}
 	}
+
+	let searchQuery = '';
+	let categories = [];
+	let backUpCategory = [];
 
 	onMount(async () => {
 		try {
@@ -60,13 +58,43 @@
 				throw new Error('Falha na rede');
 			}
 
-			data = await response.json();
-			data = data.categories;
-			console.log(data); // Exibe os dados recebidos no console
+			categories = await response.json();
+			categories = categories.categories;
+
+			backUpCategory = [...categories];
 		} catch (error) {
 			console.error('Erro ao buscar categorias:', error);
 		}
 	});
+
+	const searchCategory = async () => {
+		if (searchQuery.length > 0) {
+			try {
+				const response = await fetch(
+					'http://localhost:5000/api/v1/get_category_by_search',
+					{
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({ name: searchQuery })
+					}
+				);
+
+				const result = await response.json();
+
+				if (result && result.category) {
+					categories = result.category;
+				} else {
+					console.error('Nenhuma categoria encontrada');
+				}
+			} catch (error) {
+				console.error('Erro ao buscar categorias:', error);
+			}
+		} else {
+			categories = backUpCategory;
+		}
+	};
 </script>
 
 <form>
@@ -245,22 +273,27 @@
 					</div>
 
 					<div class="md:w-[44%]">
-						<label for="Minutagem" class="block text-sm/6 font-medium text-gray-900">Gênero</label>
+						<label for="searchCategory" class="block text-sm/6 font-medium text-gray-900"
+							>Gênero</label
+						>
 						<div
 							class="flex items-center flex-col p-2 outline outline-1 -outline-offset-1 outline-gray-300 rounded-md"
 						>
 							<div class="flex items-center w-full h-8 m-2">
 								<input
 									class="w-full pl-3 h-full rounded-lg bg-[#F2F2F2]"
-									type="search"
-									placeholder="Buscar..."
+									type="text"
+									id="searchCategory"
+									placeholder="Digite para buscar categorias..."
+									bind:value={searchQuery}
+									on:input={searchCategory}
 								/>
 								<Search size="32" />
 							</div>
 
 							<div class="overflow-y-scroll max-h-40 w-full">
-								{#if data.length > 0}
-									{#each data as category, index}
+								{#if categories.length > 0}
+									{#each categories as category, index}
 										<div
 											class="flex justify-between items-center w-full px-2 py-2 bg-white rounded-md mb-2"
 										>
@@ -308,9 +341,12 @@
 										class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
 									>
 										<span>Upload a Poster</span>
-										<input 
-										id="imageOne" name="imageOne" type="file" class="sr-only"
-										on:change={(event) => handleImageChange(event, 'imageOne')}
+										<input
+											id="imageOne"
+											name="imageOne"
+											type="file"
+											class="sr-only"
+											on:change={(event) => handleImageChange(event, 'imageOne')}
 										/>
 									</label>
 								</div>
@@ -342,8 +378,11 @@
 									>
 										<span>Upload a Banner</span>
 										<input
-										id="imageTwo" name="imageTwo" type="file" class="sr-only"
-										on:change={(event) => handleImageChange(event, 'imageTwo')}
+											id="imageTwo"
+											name="imageTwo"
+											type="file"
+											class="sr-only"
+											on:change={(event) => handleImageChange(event, 'imageTwo')}
 										/>
 									</label>
 								</div>
