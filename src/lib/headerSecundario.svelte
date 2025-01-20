@@ -147,7 +147,7 @@
             flex-direction: row-reverse;
             align-items: center;
             justify-content: space-around;
-            margin-bottom: 5px;
+            /* margin-bottom: 5px; */
         }
         
         header > ul {

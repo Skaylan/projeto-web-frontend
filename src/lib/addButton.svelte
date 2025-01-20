@@ -1,70 +1,89 @@
+<script>
+	import pageIcon from '../lib/assets/page-icon.svg';
+	import { Search } from 'lucide-svelte';
+	import { onMount } from 'svelte';
 
-<div class="bg-slate-800 w-full h-auto flex flex-col items-center p-2 gap-2">
-    <div class="bg-slate-500 w-auto h-auto">
-        <img class="object-fill" src="https://placehold.co/1024x500" alt="">
-    </div>
+	import FormComponent from './movieForm.svelte';
 
-    <div class="bg-slate-400 w-[100%] gap-4 md:flex justify-center">
-        <div class=" flex justify-center p-3 md:w-[30%]">
-            <div class="bg-slate-400">
-                <img src="https://placehold.co/200x300" alt="">
-            </div>
-        </div>
+	let movieImageOneBase64 = '';
+	let movieImageTwoBase64 = '';
 
-        <div class="bg-slate-500 w-[100%] h-[30rem] overflow-y-scroll md:w-[60%]">
-            <div class="p-2 flex flex-col">
-                <span>titulo</span>
-                <input type="text">
-            </div>
-            <div class="p-2 flex flex-col">
-                <span>titulo original</span>
-                <input type="text">
-            </div>
-            <div class="p-2 flex flex-col">
-                <span>Descrição</span>
-                <textarea class="focus:h-[10rem] h-[25px] resize-none" cols="30" rows="10"></textarea>
-            </div>
-            <div class="p-2 flex flex-col">
-                <span>Estúdio</span>
-                <input type="text">
-            </div>
-            <div class="p-2 flex flex-col">
-                <span>Diretor</span>
-                <input type="text">
-            </div>
-            <div class="p-2 flex flex-col">
-                <span>Produtora</span>
-                <input type="text">
-            </div>
-            <div class="p-2 flex flex-col">
-                <span>Nota</span>
-                <input type="text">
-            </div>
-            <div class="p-2 flex flex-col">
-                <span>Tempo</span>
-                <input type="text">
-            </div>
-            <div class="p-2 flex flex-col">
-                <span>Gênero</span>
-                <div class="bg-white pl-4">
-                    <div>
-                        <span>Terror</span>
-                        <input type="checkbox" name="Terror">
-                    </div>
-                    <div>
-                        <span>Romance</span>
-                        <input type="checkbox" name="Romance">
-                    </div>
-                    <div>
-                        <span>Ação</span>
-                        <input type="checkbox" name="Acao">
-                    </div>
-                    <div>
-                        <span>Sacanagem</span>
-                        <input type="checkbox" name="Acao">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	let movieTitle = '';
+	let movieOriginal_title = '';
+	let movieRomanized_original_title = '';
+	let movieDescription = '';
+	let movieStudio = '';
+	let movieDirector = '';
+	let movieProducer = '';
+	let movieRating = '';
+	let movieLounch_date = '';
+	let movieRunning_time = '';
+	let movieCategories = [];
+
+	async function submitMovie() {
+		const movie = {
+			title: movieTitle,
+			original_title: movieOriginal_title,
+			romanized_original_title: movieRomanized_original_title,
+			description: movieDescription,
+			studio: movieStudio,
+			director: movieDirector,
+			producer: movieProducer,
+			rating: movieRating,
+			launch_date: movieLounch_date,
+			running_time: movieRunning_time,
+			categories: movieCategories,
+			banner_img_base64: movieImageOneBase64,
+			poster_img_base64: movieImageTwoBase64
+		};
+
+		try {
+			const response = await fetch('http://localhost:5000/api/v1/add_movie', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(movie)
+			});
+
+			if (!response.ok) {
+				throw new Error('Erro ao enviar os dados.');
+			}
+
+			const result = await response.json();
+			console.log('Dados enviados com sucesso:', result);
+		} catch (error) {
+			console.error('Erro ao enviar dados:', error);
+		}
+	}
+</script>
+
+<div class="flex flex-col items-center w-full">
+	<div class="w-[90%]">
+		<FormComponent
+			bind:title={movieTitle}
+			bind:original_title={movieOriginal_title}
+			bind:romanized_original_title={movieRomanized_original_title}
+			bind:description={movieDescription}
+			bind:studio={movieStudio}
+			bind:director={movieDirector}
+			bind:producer={movieProducer}
+			bind:rating={movieRating}
+			bind:lounch_date={movieLounch_date}
+			bind:running_time={movieRunning_time}
+			bind:imageOneBase64={movieImageOneBase64}
+			bind:imageTwoBase64={movieImageTwoBase64}
+			bind:activeCategories={movieCategories}
+		/>
+
+		<!-- Botões -->
+		<div class="mt-6 flex items-center justify-end gap-x-6">
+			<button
+				on:click={submitMovie}
+				type="submit"
+				class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+				>Salvar
+			</button>
+		</div>
+	</div>
 </div>
