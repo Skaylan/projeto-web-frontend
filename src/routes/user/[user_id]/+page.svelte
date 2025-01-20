@@ -1,95 +1,114 @@
 <script>
-	import iconfunnel from "../../../lib/assets/funnel-outline.svg"
-	import iconAphabeticalOrder from "../../../lib/assets/alphabetical-order.svg"
-	import icontimer from "../../../lib/assets/timer.svg"
-	import Cookies from 'js-cookie'
+	import iconfunnel from '../../../lib/assets/funnel-outline.svg';
+	import iconAphabeticalOrder from '../../../lib/assets/alphabetical-order.svg';
+	import icontimer from '../../../lib/assets/timer.svg';
+	import Cookies from 'js-cookie';
 	import { popup } from '@skeletonlabs/skeleton';
-	import { onMount } from "svelte";
-	import { goto } from '$app/navigation'
-	let comboboxValue;
+	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
 
+	onMount(()=> {
+		console.log('Componentes carregados')
+	})
 	
+	let comboboxValue;
+	let idDaPArada;
+
 	const popupCombobox = {
 		event: 'click',
 		target: 'popupCombobox',
-		placement: 'bottom',
+		placement: 'bottom-start',
 		closeQuery: '.listbox-item'
 	};
-	
+
 	export let data;
-	const { user } = data 
+	const { user } = data;
+
+	let isBackdropVisible = false;
+
+	function toggleBackdrop() {
+		isBackdropVisible = !isBackdropVisible;
+	}
+
 </script>
 
-<!-- Primeira Seção -->
-<div class="relative border-2 border-rose-500 w-full bg-[#50d71e] sm:h-[260px] md:h-[500px]">
-	<img
-		src="https://placehold.co/1000x500"
-		alt="Imagem de capa"
-		class="w-full h-full object-cover"
-	/>
 
-	<div class="absolute flex flex-col m-4 h-auto bottom-[1px] left-0 sm:ml-7 mb-2 md:m-12">
-		<div
-			class="border-2 rounded-full border-red-500 sm:w-[7rem] h-[7rem] md:w-[13rem] md:h-[13rem]"
-		>
-			<img
-				src="https://placehold.co/30x30"
-				alt="Ícone de usuário"
-				class="w-full h-full object-cover rounded-full"
-			/>
+<div class="flex justify-center relative">
+	<!-- Tela escura -->
+	{#if isBackdropVisible}
+		<div 
+			class="fixed inset-0 bg-black bg-opacity-50 z-10" 
+			on:click={() => (isBackdropVisible = false)}>
 		</div>
-		<div class="mt-1 flex items-center justify-center">
-			<h1 class="text-white text-lg font-semibold text-center sm:text-sm md:text-3xl">{user.name}</h1>
-		</div>
-	</div>
-</div>
+	{/if}
 
-<!-- Segunda Seção -->
-<div class="flex border ml-4 mr-4 border-red-500 justify-center md:justify-start">
-	<button class="btn bg-[#75C9C8] flex mr-1 gap-1 w-[120px] h-[30px] rounded-t-[10px] justify-center items-center" use:popup={popupCombobox}>
-		<div class="flex w-[100px] items-center justify-center gap-1">
-			<img class="w-[20px]" src="{iconfunnel}" alt="iconfunnel">
-			<span>Categorias</span>
-			<span>↓</span>
-		</div>
-	</button>
+	<div class="relative md:w-[70%]">
+		<div class="z-20">
+			<div class="bg-red-500 relative w-[100%] h-[15rem] md:h-[20rem]">
+				<div></div>
 
-	
-	<div class="bg-[#75C9C8] w-[120px] h-[140px] rounded-b" data-popup="popupCombobox">
-		<div class="p-3" rounded="rounded-none">
-			<a class="hover:bg-teal-500" href="#/">Romance</a>
-			<a class="hover:bg-teal-500" href="#/">Aventura</a>
-			<a class="hover:bg-teal-500" href="#/">Comedia</a>
-			<a class="hover:bg-teal-500" href="#/">Suspense</a>
+				<div class="flex flex-col items-center left-[10%] bottom-[5%] gap-2 absolute">
+					<div class="bg-green-500 rounded-full w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem]">
+						<div>
+							<img src="" alt="" />
+						</div>
+					</div>
+					<span class="bg-yellow-300">Carlos</span>
+				</div>
+			</div>
 		</div>
-		<div class="arrow bg-surface-100-800-token" />
-	</div>
-					
-	<div class="bg-[#75C9C8] btn p-0 flex mr-1 gap-1 w-[100px] rounded-t-[10px] justify-center items-center">
-		<div class="flex w-[100px] items-center justify-center gap-1">
-			<img class="w-[20px] gap-2" src="{icontimer}" alt="icontimer">
-			<span>Recentes</span>
-		</div>
-	</div>
 
-	<div class="bg-[#75C9C8] btn p-0 flex gap-1 w-[100px] rounded-t-[10px] justify-center items-center">
-		<div class="flex w-[100px] items-center justify-center gap-1">
-			<img class="w-[20px] gap-2" src="{iconAphabeticalOrder}" alt="icontimer">
-			<span>Ordem</span>
-		</div>
-	</div>
-</div>
+		<div class="flex justify-center md:justify-start">
+			<!-- Botão que ativa a tela escura -->
+			<button 
+				class="btn flex mr-1 gap-1 w-[120px] h-[30px] rounded-t-[10px] bg-white justify-center items-center z-30" 
+				use:popup={popupCombobox}
+				on:click= {() => {toggleBackdrop()}}>
+				<div class="flex w-[100px] items-center justify-center gap-1">
+					<img class="w-[20px]" src="{iconfunnel}" alt="iconfunnel">
+					<span>Categorias</span>
+					<span>↓</span>
+				</div> 
+			</button>
+			
+		<div id="categoryMenu" class="w-[220px] h-[240px] bg-white rounded-b z-20"
+			data-popup="popupCombobox"
+			>
+				<div class="p-3" rounded="rounded-none">
+					<a class="" href="#/">Romance</a>
+					<a class="" href="#/">Aventura</a>
+					<a class="" href="#/">Comedia</a>
+					<a class="" href="#/">Suspense</a>
+				</div>
+				<div class="arrow bg-surface-100-800-token" />
+			</div>
 
-<!-- Terceira Seção -->
-<div class="flex items-center justify-center pl-4 pr-4">
-	<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-1">
-		<img class="rounded-lg" src="https://placehold.co/431X584" alt="" />
-		<img class="rounded-lg" src="https://placehold.co/431X584" alt="" />
-		<img class="rounded-lg" src="https://placehold.co/431X584" alt="" />
-		<img class="rounded-lg" src="https://placehold.co/431X584" alt="" />
-		<img class="rounded-lg" src="https://placehold.co/431X584" alt="" />
-		<img class="rounded-lg" src="https://placehold.co/431X584" alt="" />
-		<img class="rounded-lg" src="https://placehold.co/431X584" alt="" />
-		<img class="rounded-lg" src="https://placehold.co/431X584" alt="" />
+			<div class="btn p-0 flex mr-1 gap-1 w-[100px] bg-white rounded-t-[10px] rounded-tl-[10px] justify-center items-center z-20">
+				<div class="flex w-[100px] items-center justify-center gap-1">
+					<img class="w-[20px] gap-2" src="{icontimer}" alt="icontimer">
+					<span>Recentes</span>
+				</div>
+			</div>
+		
+			<div class="btn p-0 flex gap-1 w-[100px] bg-white rounded-t-[10px] justify-center items-center z-20">
+				<div class="flex w-[100px] items-center justify-center gap-1">
+					<img class="w-[20px] gap-2" src="{iconAphabeticalOrder}" alt="icontimer">
+					<span>Ordem</span>
+				</div>
+			</div>
+		</div>
+		
+		<div class="flex items-center justify-center">
+			<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-1">
+				<img class="rounded-lg" src="https://placehold.co/431X584" alt="" />
+				<img class="rounded-lg" src="https://placehold.co/431X584" alt="" />
+				<img class="rounded-lg" src="https://placehold.co/431X584" alt="" />
+				<img class="rounded-lg" src="https://placehold.co/431X584" alt="" />
+				<img class="rounded-lg" src="https://placehold.co/431X584" alt="" />
+				<img class="rounded-lg" src="https://placehold.co/431X584" alt="" />
+				<img class="rounded-lg" src="https://placehold.co/431X584" alt="" />
+				<img class="rounded-lg" src="https://placehold.co/431X584" alt="" />
+			</div>
+		</div>
 	</div>
 </div>
