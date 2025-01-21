@@ -340,7 +340,7 @@
 										for="imageOne"
 										class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
 									>
-										<span>Upload a Poster</span>
+										<span>Upload a Banner</span>
 										<input
 											id="imageOne"
 											name="imageOne"
@@ -376,7 +376,7 @@
 										for="imageTwo"
 										class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
 									>
-										<span>Upload a Banner</span>
+										<span>Upload a Poster</span>
 										<input
 											id="imageTwo"
 											name="imageTwo"
