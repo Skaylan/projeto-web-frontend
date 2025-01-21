@@ -22,6 +22,10 @@ export default {
 			boxShadow:{
 				'custom': '0 4px 3px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06)',
 			},
+
+			div:{
+				'focus': 'transition hover:-translate-y-1 border hover:z-40 hover:border-gray-500 hover:scale-105 duration-500'
+			},
 		},
 	},
 	plugins: [
