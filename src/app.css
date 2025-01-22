@@ -10,6 +10,6 @@
 
 @layer utilities {
     .focus-div {
-        @apply transition hover:-translate-y-1 border hover:z-40 hover:scale-105 duration-500;
+        @apply transition hover:-translate-y-0.5 hover:z-40 hover:scale-105 duration-500;
     }
 }

@@ -1,15 +1,15 @@
 <script>
 	import iconfunnel from '../../../lib/assets/funnel-outline.svg';
 	import iconAphabeticalOrder from '../../../lib/assets/alphabetical-order.svg';
-	import icontimer from '../../../lib/assets/timer.svg';
-	import Cookies from 'js-cookie';
+	import BannerPadrao from '../../../lib/assets/bannerPadrao.png';
+	import ProfilePadrao from '../../../lib/assets/profilePadrao.png';
+	import SemFilmes from '../../../lib/assets/SemFilmes.jpg';
 	import { popup } from '@skeletonlabs/skeleton';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
-
-	onMount(() => {
-		console.log('Componentes carregados');
-	});
+	
+	export let data;
+	const { user } = data;
 
 	const popupCombobox = {
 		event: 'click',
@@ -17,9 +17,6 @@
 		placement: 'bottom-start',
 		closeQuery: '.listbox-item'
 	};
-
-	export let data;
-	const { user } = data;
 
 	let isBackdropVisible = false;
 
@@ -45,12 +42,32 @@
 			console.log('Erro ao buscar filmes: ', error);
 		}
 	});
+
+	let categories = [];
+
+	onMount(async () => {
+		try {
+			const response = await fetch('http://localhost:5000/api/v1/get_categories');
+
+			if (!response.ok) {
+				throw new Error('Falha na rede');
+			}
+
+			categories = await response.json();
+			categories = categories.categories;
+
+			backUpCategory = [...categories];
+		} catch (error) {
+			console.error('Erro ao buscar categorias:', error);
+		}
+	});
 </script>
 
-<div class="flex justify-center relative">
+<div class="flex justify-center h-[100%] relative">
 	<!-- Tela escura -->
 	{#if isBackdropVisible}
 		<div
+			aria-hidden="true"
 			class="fixed inset-0 bg-black bg-opacity-50 z-10"
 			on:click={() => (isBackdropVisible = false)}
 		></div>
@@ -58,36 +75,47 @@
 
 	<div class="relative md:w-[70%]">
 		<div class="z-20">
-			<div class="relative w-full h-[15rem] rounded-b-lg md:h-[25rem] bg-red-500">
+			<div class="relative w-full h-[15rem] rounded-b-lg md:h-[25rem]">
 				<!-- Imagem de fundo -->
-				<img
-					src="data:image/jpeg;base64,{user.banner_img}"
-					alt="Banner do usuário"
-					class="absolute rounded-b-lg top-0 left-0 w-full h-full object-fill"
-				/>
+
+				{#if user.banner_img == ''}
+					<img
+						src={BannerPadrao}
+						alt="Banner do usuário"
+						class="absolute rounded-b-lg top-0 left-0 w-full h-full object-cover"
+					/>
+				{:else}
+					<img
+						src="data:image/jpeg;base64,{user.banner_img}"
+						alt="Banner do usuário"
+						class="absolute rounded-b-lg top-0 left-0 w-full h-full object-fill"
+					/>
+				{/if}
 
 				<!-- Conteúdo sobreposto -->
 				<div class="absolute left-[10%] bottom-[5%] flex flex-col items-center gap-2">
 					<!-- Imagem do avatar -->
 					<div
-						class="rounded-full overflow-hidden w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] bg-green-500"
+						class="bg-white rounded-full overflow-hidden w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem]"
 					>
-						<img
-							src="data:image/jpeg;base64,{user.profile_img}"
-							alt="Avatar do usuário"
-							class="w-full h-full object-cover"
-						/>
+						{#if user.profile_img == ''}
+							<img src={ProfilePadrao} alt="Avatar do usuário" class="w-full h-full object-fill" />
+						{:else}
+							<img
+								src="data:image/jpeg;base64,{user.profile_img}"
+								alt="Avatar do usuário"
+								class="w-full h-full object-cover"
+							/>
+						{/if}
 					</div>
-					<!-- Nome do usuário -->
-					<span class="bg-white p-1 font-bold rounded-md text-black">{user.name}</span>
 				</div>
 			</div>
 		</div>
 
-		<div class="flex pl-2 justify-start">
+		<div class="flex p-2 justify-start">
 			<!-- Botão que ativa a tela escura -->
 			<button
-				class="btn flex mr-1 gap-1 w-[120px] h-[30px] rounded-t-[10px] bg-white justify-center items-center z-30"
+				class="btn flex mr-2 w-[120px] h-[40px] bg-white rounded-lg shadow-md items-center z-20"
 				use:popup={popupCombobox}
 				on:click={() => {
 					toggleBackdrop();
@@ -105,35 +133,44 @@
 				class="w-[220px] h-[240px] bg-white rounded-b z-20"
 				data-popup="popupCombobox"
 			>
-				<div class="p-3" rounded="rounded-none">
-					<a class="" href="#/">Romance</a>
-					<a class="" href="#/">Aventura</a>
-					<a class="" href="#/">Comedia</a>
-					<a class="" href="#/">Suspense</a>
-				</div>
+
+				{#each categories as category }
+					<div class="flex flex-col p-3" rounded="rounded-none">
+						<a class="" href="#/">{category.name}</a>
+					</div>
+				{/each}
+
 				<div class="arrow bg-surface-100-800-token" />
 			</div>
 
 			<div
-				class="btn p-0 flex gap-1 w-[100px] bg-white rounded-t-[10px] justify-center items-center z-20"
+				class="btn p-0 flex gap-1 w-[100px] bg-white rounded-lg justify-center items-center z-20"
 			>
-				<div class="flex w-[100px] items-center justify-center gap-1">
+				<div class="btn flex gap-1 w-[100px] h-[40px] rounded-lg bg-white shadow-md items-center">
 					<img class="w-[20px] gap-2" src={iconAphabeticalOrder} alt="icontimer" />
 					<span>Ordem</span>
 				</div>
 			</div>
 		</div>
 
-		<div class="flex items-center justify-center">
-			{#each movies as movie}
-				<div class="grid grid-cols-2 m-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-1">
-					<img
-						class="rounded-lg focus-div"
-						src="data:image/jpeg;base64,{movie.poster_img}"
-						alt=""
-					/>
+		{#if movies != ''}
+			<div class="flex items-center justify-center">
+				{#each movies as movie}
+					<div class="grid grid-cols-2 m-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-1">
+						<img
+							class="rounded-lg focus-div"
+							src="data:image/jpeg;base64,{movie.poster_img}"
+							alt=""
+						/>
+					</div>
+				{/each}
+			</div>
+		{:else}
+			<div class="flex h-[80%] justify-center md:h-[40%]">
+				<div class="flex justify-center w-[60%] h-full object-contain">
+					<img class="rounded-lg object-contain" src={SemFilmes} alt="" />
 				</div>
-			{/each}
-		</div>
+			</div>
+		{/if}
 	</div>
 </div>
