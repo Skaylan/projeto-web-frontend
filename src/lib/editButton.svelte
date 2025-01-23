@@ -17,6 +17,7 @@
 	let movieRunning_time = '';
 	let movieBanner = '';
 	let moviePoster = '';
+	let categories = [];
 
 	async function submitMovie() {
 		const movie = {
@@ -32,7 +33,8 @@
 			lounch_date: movieLounch_date,
 			running_time: movieRunning_time,
 			banner_img_base64: movieBanner,
-			poster_img_base64: moviePoster
+			poster_img_base64: moviePoster,
+			categories:categories
 		};
 
 		try {
@@ -159,6 +161,7 @@
 				bind:running_time={movieRunning_time}
 				bind:imageOneBase64={movieBanner}
 				bind:imageTwoBase64={moviePoster}
+				bind:activeCategories={categories}
 			/>
 
 			<div class="flex justify-center gap-4 mt-4 w-full">
