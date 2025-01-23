@@ -7,7 +7,7 @@
 	import { popup } from '@skeletonlabs/skeleton';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
-	
+
 	export let data;
 	const { user } = data;
 
@@ -28,22 +28,26 @@
 
 	onMount(async () => {
 		try {
-			const response = await fetch('http://localhost:5000/api/v1/get_movies');
+			const response = await fetch(`http://localhost:5000/api/v1/get_liked_movies?id=${user.id}`);
 
 			if (!response.ok) {
 				throw new Error('Falha na conexão com o servidor');
 			}
 
 			movies = await response.json();
-			movies = movies.movies;
+			movies = movies.liked_movie;
 
-			console.log(movies.poster_img);
+			movies = movies.map((item) => ({
+				movieData: item.movie
+			}));
+
 		} catch (error) {
 			console.log('Erro ao buscar filmes: ', error);
 		}
 	});
 
 	let categories = [];
+	let backUpCategory = [];
 
 	onMount(async () => {
 		try {
@@ -133,9 +137,8 @@
 				class="w-[220px] h-[240px] bg-white rounded-b z-20"
 				data-popup="popupCombobox"
 			>
-
-				{#each categories as category }
-					<div class="flex flex-col p-3" rounded="rounded-none">
+				{#each categories as category}
+					<div class="flex flex-col p-3 hover:underline" rounded="rounded-none">
 						<a class="" href="#/">{category.name}</a>
 					</div>
 				{/each}
@@ -154,12 +157,14 @@
 		</div>
 
 		{#if movies != ''}
-			<div class="flex items-center justify-center">
+			<div
+				class="grid grid-cols-2 m-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2"
+			>
 				{#each movies as movie}
-					<div class="grid grid-cols-2 m-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-1">
+					<div class="h-full">
 						<img
-							class="rounded-lg focus-div"
-							src="data:image/jpeg;base64,{movie.poster_img}"
+							class="rounded-lg focus-div object-contain"
+							src="data:image/jpeg;base64,{movie.movieData.poster_img}"
 							alt=""
 						/>
 					</div>
@@ -168,7 +173,7 @@
 		{:else}
 			<div class="flex h-[80%] justify-center md:h-[40%]">
 				<div class="flex justify-center w-[60%] h-full object-contain">
-					<img class="rounded-lg object-contain" src={SemFilmes} alt="" />
+					<img class="rounded-lg object-contain" src={SemFilmes} alt="" />	
 				</div>
 			</div>
 		{/if}
